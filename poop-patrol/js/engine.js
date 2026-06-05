@@ -1,6 +1,6 @@
 import { W, H, GUNS, BIRD_TYPES, levelPlan } from './config.js';
 import { state } from './state.js';
-import { updateHud, show, hide, setPauseVisible } from './hud.js';
+import { updateHud, show, hide, setPlayUI } from './hud.js';
 import { renderShop } from './shop.js';
 
 let currentPlan = null;
@@ -77,7 +77,7 @@ export function startLevel(){
   state.killed = 0;
   state.spawnTimer = 600;
   hide('shop-screen'); hide('start-screen'); hide('over-screen');
-  setPauseVisible(true);
+  setPlayUI(true);
   updateHud();
 }
 
@@ -183,7 +183,7 @@ function addSplat(x,y){
 function levelCleared(){
   state.scene = 'shop';
   state.paused = false;
-  setPauseVisible(false);
+  setPlayUI(false);
   document.getElementById('shop-title').textContent = 'LEVEL ' + state.level + ' CLEARED';
   document.getElementById('shop-sub').textContent = 'Gear up, restock ammo, and decide whether to wash off.';
   renderShop();
@@ -193,7 +193,7 @@ function levelCleared(){
 function gameOver(){
   state.scene = 'over';
   state.paused = false;
-  setPauseVisible(false);
+  setPlayUI(false);
   document.getElementById('over-stats').textContent =
     'You reached Level ' + state.level + ' with $' + state.cash;
   show('over-screen');

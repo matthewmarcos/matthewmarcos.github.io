@@ -2,7 +2,7 @@ import { W, H } from './config.js';
 import { state, resetRun } from './state.js';
 import { update, shoot, startLevel } from './engine.js';
 import { draw, initRender } from './render.js';
-import { updateHud, setPauseVisible, refreshPauseIcon, show } from './hud.js';
+import { updateHud, setPlayUI, refreshPauseIcon, show, equipWeapon } from './hud.js';
 import { renderShop } from './shop.js';
 
 const cv = document.getElementById('game');
@@ -34,7 +34,12 @@ function togglePause(){
 }
 document.getElementById('pause-btn').addEventListener('click', togglePause);
 window.addEventListener('keydown', e => {
-  if(e.key === 'p' || e.key === 'P'){ togglePause(); }
+  if(e.key === 'p' || e.key === 'P'){ togglePause(); return; }
+  // number keys 1-6 switch to the matching owned gun mid-game
+  if(state.scene === 'play' && !state.paused && e.key >= '1' && e.key <= '9'){
+    const id = state.owned[+e.key - 1];
+    if(id) equipWeapon(id);
+  }
 });
 
 // ---- Buttons ----
@@ -44,13 +49,13 @@ document.getElementById('retry-btn').onclick = newRun;
 document.getElementById('next-btn').onclick = ()=>{ state.level++; startLevel(); };
 
 // ---- Init UI ----
-setPauseVisible(false);
+setPlayUI(false);
 refreshPauseIcon();
 updateHud();
 
 // ---- Debug hook (opt-in via ?debug) ----
 if(new URLSearchParams(location.search).has('debug')){
-  window.__pp = { state, renderShop, show, setPauseVisible, updateHud };
+  window.__pp = { state, renderShop, show, setPlayUI, updateHud, equipWeapon };
 }
 
 // ---- Loop ----
