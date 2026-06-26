@@ -1220,7 +1220,7 @@ Expected: FAIL — cannot find module `./solver`.
 
 ```ts
 import {
-  type SlideBoard, goal, isSolved, blankIndex, applyMove, legalMoves, isSolvable,
+  type SlideBoard, isSolved, blankIndex, applyMove, legalMoves, isSolvable,
 } from './board';
 
 // Manhattan distance + linear-conflict heuristic (admissible & consistent).
@@ -1319,16 +1319,12 @@ function idaStar(start: SlideBoard, n: number): number[] {
     if (f > threshold) return f;
     if (isSolved(board, n)) return true;
     let min = Infinity;
-    const blank = blankIndex(board);
     for (const tile of legalMoves(board, n)) {
-      // Avoid immediately undoing the previous move (tile that just came from blank).
+      // Skipping the tile we just moved prevents the only immediate cycle
+      // (sliding it straight back into the blank).
       if (tile === lastTile) continue;
-      const movedFrom = blank; // blank position becomes where 'tile' was
       const nb = applyMove(board, tile, n);
       path.push(tile);
-      const prevTileValue = board[blank]; // unused; kept for clarity
-      void prevTileValue;
-      void movedFrom;
       const t = search(nb, g + 1, tile);
       if (t === true) return true;
       if (typeof t === 'number' && t < min) min = t;
@@ -1341,7 +1337,7 @@ function idaStar(start: SlideBoard, n: number): number[] {
     const t = search(start, 0, -1);
     if (t === true) return path.slice();
     if (t === Infinity) return [];
-    threshold = t as number;
+    threshold = t;
   }
 }
 
@@ -1350,9 +1346,6 @@ export function solveSliding(b: SlideBoard, n: number): number[] {
   if (isSolved(b, n)) return [];
   return n <= 3 ? aStar(b, n) : idaStar(b, n);
 }
-
-// re-export to keep goal reachable for callers that import from the solver barrel
-export { goal };
 ```
 
 Note on the IDA* loop-prevention: skipping `tile === lastTile` prevents the
