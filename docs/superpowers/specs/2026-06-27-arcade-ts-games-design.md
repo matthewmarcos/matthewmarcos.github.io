@@ -153,9 +153,14 @@ and the boundaries clear: a page renders state and dispatches user intent; a
   - `npm run build` — production bundle to `dist/`.
   - `npm run preview` — serve the built bundle locally.
   - `npm run test` — Vitest.
-- **GitHub Actions** (`.github/workflows/deploy.yml`): on push to `main`, install
-  deps → build → upload the `dist/` artifact → deploy to GitHub Pages. Build
-  output is **not** committed; the source tree stays clean.
+- **GitHub Actions — deploy (`.github/workflows/deploy.yml`):** on push to
+  `main`, install deps → build → upload the `dist/` artifact → deploy to GitHub
+  Pages. Build output is **not** committed; the source tree stays clean.
+- **GitHub Actions — CI (`.github/workflows/ci.yml`):** on `pull_request`, install
+  deps → run **lint** (ESLint + Prettier check) → typecheck → tests. Reports pass/
+  fail status on the PR. Note: the user is **not** enabling branch protection on
+  `main`, so this check is **informational** (visible on the PR) rather than a
+  merge-blocking gate.
 - **One-time manual step (user):** repo **Settings → Pages → Source → "GitHub
   Actions"**. (Switches Pages from branch-serving to the Actions artifact.)
 - **Best-practices kit:**
