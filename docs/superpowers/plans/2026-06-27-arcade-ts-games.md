@@ -1220,7 +1220,7 @@ Expected: FAIL — cannot find module `./solver`.
 
 ```ts
 import {
-  type SlideBoard, isSolved, blankIndex, applyMove, legalMoves, isSolvable,
+  type SlideBoard, isSolved, applyMove, legalMoves, isSolvable,
 } from './board';
 
 // Manhattan distance + linear-conflict heuristic (admissible & consistent).
