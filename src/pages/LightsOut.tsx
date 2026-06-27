@@ -2,13 +2,16 @@ import { useEffect, useMemo, useState } from 'react';
 import PageShell from '../components/PageShell';
 import BoardGrid from '../components/BoardGrid';
 import { useStepPlayer } from '../components/useStepPlayer';
+import { usePersistentState } from '../components/usePersistentState';
 import { SIZE, press, isSolved, randomBoard, type LightsBoard } from '../games/lights-out/board';
 import { solve } from '../games/lights-out/solver';
 
 export default function LightsOut() {
-  const [board, setBoard] = useState<LightsBoard>(() => randomBoard(8));
+  const [board, setBoard] = usePersistentState<LightsBoard>('lightsout.board', () =>
+    randomBoard(8),
+  );
   const [hint, setHint] = useState<number | null>(null);
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = usePersistentState('lightsout.clicks', 0);
   const player = useStepPlayer<number>();
 
   const solved = isSolved(board);

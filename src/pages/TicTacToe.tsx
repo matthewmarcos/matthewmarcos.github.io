@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PageShell from '../components/PageShell';
+import { usePersistentState } from '../components/usePersistentState';
 import { emptyBoard, winner, other, type Player, type TTTBoard } from '../games/tic-tac-toe/board';
 import { bestMove } from '../games/tic-tac-toe/minimax';
 
 export default function TicTacToe() {
-  const [human, setHuman] = useState<Player>('X');
-  const [board, setBoard] = useState<TTTBoard>(() => emptyBoard());
+  const [human, setHuman] = usePersistentState<Player>('ttt.human', 'X');
+  const [board, setBoard] = usePersistentState<TTTBoard>('ttt.board', () => emptyBoard());
   const ai = other(human);
   const result = winner(board);
   const humanTurn = board.filter((c) => c !== null).length % 2 === (human === 'X' ? 0 : 1);
@@ -23,7 +24,7 @@ export default function TicTacToe() {
       });
     }, 350);
     return () => window.clearTimeout(id);
-  }, [board, humanTurn, result, ai]);
+  }, [board, humanTurn, result, ai, setBoard]);
 
   function play(i: number) {
     if (result || !humanTurn || board[i]) return;

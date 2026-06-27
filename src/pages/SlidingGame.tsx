@@ -2,15 +2,19 @@ import { useState } from 'react';
 import PageShell from '../components/PageShell';
 import BoardGrid from '../components/BoardGrid';
 import { useStepPlayer } from '../components/useStepPlayer';
+import { usePersistentState } from '../components/usePersistentState';
+import { useOptimalMoves } from '../components/useOptimalMoves';
 import { shuffle, applyMove, isSolved, legalMoves, type SlideBoard } from '../games/sliding/board';
 import { solveSliding } from '../games/sliding/solver';
 
 export default function SlidingGame() {
-  const [n, setN] = useState(3);
-  const [board, setBoard] = useState<SlideBoard>(() => shuffle(3, 60));
+  const [n, setN] = usePersistentState('sliding.n', 3);
+  const [board, setBoard] = usePersistentState<SlideBoard>('sliding.board', () => shuffle(3, 60));
+  const [moves, setMoves] = usePersistentState('sliding.moves', 0);
   const [hint, setHint] = useState<number | null>(null);
   const [error, setError] = useState('');
   const player = useStepPlayer<number>();
+  const { movesLeft } = useOptimalMoves(board, n);
 
   const solved = isSolved(board, n);
   const movable = new Set(legalMoves(board, n));
@@ -20,12 +24,14 @@ export default function SlidingGame() {
     setHint(null);
     setError('');
     setN(size);
+    setMoves(0);
     setBoard(shuffle(size, size === 3 ? 60 : 80));
   }
 
   function clickTile(tile: number) {
     if (player.running || !movable.has(tile)) return;
     setHint(null);
+    setMoves((m) => m + 1);
     setBoard((b) => applyMove(b, tile, n));
   }
 
@@ -64,6 +70,32 @@ export default function SlidingGame() {
         <button className={`arcade-btn ${n === 4 ? '' : 'ghost'}`} onClick={() => reset(4)}>
           4×4
         </button>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '2.5rem',
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <div className="pixel" style={{ fontSize: '2.4rem', color: 'var(--accent2)' }}>
+            {moves}
+          </div>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '1px', color: 'var(--muted)' }}>
+            MOVES
+          </div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div className="pixel" style={{ fontSize: '2.4rem', color: 'var(--accent3)' }}>
+            {solved ? 0 : (movesLeft ?? '…')}
+          </div>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '1px', color: 'var(--muted)' }}>
+            TO SOLVE
+          </div>
+        </div>
       </div>
 
       <BoardGrid n={n} cellPx={64}>
@@ -109,11 +141,7 @@ export default function SlidingGame() {
       </div>
 
       <p className="status">
-        {error
-          ? `⚠ ${error}`
-          : solved
-            ? '✨ Solved!'
-            : `${n}×${n} — ${player.running ? 'solving…' : 'your move'}`}
+        {error ? `⚠ ${error}` : solved ? '✨ Solved!' : player.running ? 'Auto-solving…' : ''}
       </p>
     </PageShell>
   );
