@@ -39,15 +39,11 @@ export default function LightsOut() {
   function handleSolve() {
     const sol = solve(board);
     if (!sol || sol.length === 0) return;
-    // Highlight each cell in red the instant the auto-solver clicks it.
-    player.play(
-      sol,
-      (idx) => {
-        setHint(idx);
-        setBoard((b) => press(b, idx));
-      },
-      500,
-    );
+    // Highlight the next cell to press one tick ahead of the move.
+    player.play(sol, (idx) => setBoard((b) => press(b, idx)), {
+      intervalMs: 500,
+      preview: (idx) => setHint(idx),
+    });
   }
 
   function handleStop() {

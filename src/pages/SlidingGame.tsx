@@ -45,15 +45,11 @@ export default function SlidingGame() {
     setError('');
     try {
       const moves = solveSliding(board, n);
-      // Flash each tile red the instant the auto-solver slides it.
-      player.play(
-        moves,
-        (tile) => {
-          setHint(tile);
-          setBoard((b) => applyMove(b, tile, n));
-        },
-        500,
-      );
+      // Highlight the next tile to slide one tick ahead of the move.
+      player.play(moves, (tile) => setBoard((b) => applyMove(b, tile, n)), {
+        intervalMs: 500,
+        preview: (tile) => setHint(tile),
+      });
     } catch (e) {
       setError((e as Error).message);
     }
