@@ -41,7 +41,7 @@ export default function TicTacToe() {
 
   const message =
     result === 'draw'
-      ? "It's a draw — as it should be."
+      ? "It's a draw — the best you can manage against perfect play."
       : result
         ? result === human
           ? 'You win?! (impossible)'
@@ -51,7 +51,11 @@ export default function TicTacToe() {
           : 'Computer thinking…';
 
   return (
-    <PageShell title="⭕ Tic-Tac-Toe" subtitle="The computer plays perfectly. It will never lose.">
+    <PageShell
+      title="⭕ Tic-Tac-Toe"
+      subtitle="The computer plays perfectly. It will never lose."
+      centered
+    >
       <div className="controls">
         <button
           className={`arcade-btn ${human === 'X' ? '' : 'ghost'}`}

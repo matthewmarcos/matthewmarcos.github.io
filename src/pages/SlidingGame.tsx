@@ -55,6 +55,7 @@ export default function SlidingGame() {
     <PageShell
       title="🧩 Sliding Puzzle"
       subtitle="Slide tiles into order. Let it auto-solve or ask for one hint."
+      centered
     >
       <div className="controls">
         <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => reset(3)}>

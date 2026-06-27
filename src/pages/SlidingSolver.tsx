@@ -58,6 +58,7 @@ export default function SlidingSolver() {
     <PageShell
       title="🔢 Sliding Solver"
       subtitle="Type your board (leave the gap blank), then get the exact tiles to click in order."
+      centered
     >
       <div className="controls">
         <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => resize(3)}>
