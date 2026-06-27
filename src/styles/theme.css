@@ -1,0 +1,45 @@
+:root {
+  --bg: #0a0118;
+  --card: #160b2e;
+  --card-hover: #1f0f42;
+  --accent: #ff3df0;
+  --accent2: #00f0ff;
+  --accent3: #ffe14d;
+  --text: #f3eaff;
+  --muted: #9d86c9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(255, 61, 240, 0.18), transparent 60%),
+    radial-gradient(1000px 500px at 100% 10%, rgba(0, 240, 255, 0.14), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+}
+a { color: inherit; }
+h1, h2, .pixel { font-family: 'Press Start 2P', monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 3.5rem) 1.25rem 4rem; }
+.back-link {
+  display: inline-block; margin-bottom: 1.5rem; color: var(--accent2);
+  text-decoration: none; font-size: 0.85rem;
+}
+.back-link:hover { text-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+.arcade-btn {
+  font-family: 'Press Start 2P', monospace; font-size: 0.62rem; cursor: pointer;
+  color: var(--bg); background: var(--accent3); border: none; border-radius: 8px;
+  padding: 0.7rem 1rem; letter-spacing: 0.5px;
+}
+.arcade-btn:disabled { opacity: 0.45; cursor: default; }
+.arcade-btn.secondary { background: var(--accent2); }
+.arcade-btn.ghost { background: transparent; color: var(--accent2); border: 1px solid var(--accent2); }
+.controls { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.25rem 0; }
+.status { color: var(--muted); min-height: 1.5em; margin-top: 0.5rem; }
+.cell {
+  display: grid; place-items: center; cursor: pointer; user-select: none;
+  border-radius: 10px; transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.cell.hint { box-shadow: 0 0 0 3px var(--accent3), 0 0 18px var(--accent3); }
