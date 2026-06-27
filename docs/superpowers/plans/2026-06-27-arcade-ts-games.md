@@ -1529,8 +1529,6 @@ export default function SlidingSolver() {
 
   function parseBoard(): SlideBoard | null {
     const nums = cells.map((c) => (c === '' ? 0 : parseInt(c, 10)));
-    const expected = new Set<number>();
-    for (let i = 0; i < n * n; i++) expected.add(i);
     const seen = new Set<number>();
     for (const v of nums) {
       if (Number.isNaN(v) || v < 0 || v > n * n - 1 || seen.has(v)) return null;
