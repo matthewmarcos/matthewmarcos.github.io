@@ -11,7 +11,9 @@ type Card = {
 
 const GAMES: Card[] = [
   {
-    to: '/poop-patrol/',
+    // Link straight to the file: the Vite dev server's SPA fallback hijacks a
+    // bare "/poop-patrol/" directory request and serves the app shell instead.
+    to: '/poop-patrol/index.html',
     emoji: '💩',
     title: 'Poop Patrol',
     blurb: 'Splat-em-up chaos. Patrol the streets and clean up.',
@@ -33,13 +35,6 @@ const GAMES: Card[] = [
     tags: ['puzzle', 'A*'],
   },
   {
-    to: '/sliding-solver',
-    emoji: '🔢',
-    title: 'Sliding Solver',
-    blurb: 'Type any board, get the exact list of tiles to click.',
-    tags: ['tool', 'IDA*'],
-  },
-  {
     to: '/tic-tac-toe',
     emoji: '⭕',
     title: 'Tic-Tac-Toe',
@@ -47,6 +42,83 @@ const GAMES: Card[] = [
     tags: ['minimax', 'AI'],
   },
 ];
+
+const TOOLS: Card[] = [
+  {
+    to: '/sliding-solver',
+    emoji: '🔢',
+    title: 'Sliding Solver',
+    blurb: 'Type any board, get the exact list of tiles to click.',
+    tags: ['tool', 'IDA*'],
+  },
+];
+
+function CardLink({ card }: { card: Card }) {
+  const inner = (
+    <>
+      <div style={{ fontSize: '2.6rem' }}>{card.emoji}</div>
+      <h2 style={{ fontSize: '1.3rem', margin: '0.85rem 0 0.35rem' }}>{card.title}</h2>
+      <p className="status" style={{ margin: 0 }}>
+        {card.blurb}
+      </p>
+      <div style={{ marginTop: '0.9rem', display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+        {card.tags.map((t) => (
+          <span key={t} style={{ fontSize: '0.7rem', color: 'var(--accent2)' }}>
+            #{t}
+          </span>
+        ))}
+      </div>
+    </>
+  );
+  const style = {
+    background: 'var(--card)',
+    border: '1px solid rgba(255,61,240,0.18)',
+    borderRadius: '18px',
+    padding: '1.4rem',
+    textDecoration: 'none',
+    color: 'inherit',
+    display: 'block',
+  } as const;
+  return card.external ? (
+    <a href={card.to} style={style}>
+      {inner}
+    </a>
+  ) : (
+    <Link to={card.to} style={style}>
+      {inner}
+    </Link>
+  );
+}
+
+function Section({ title, cards }: { title: string; cards: Card[] }) {
+  return (
+    <section style={{ marginBottom: '2.5rem' }}>
+      <div
+        className="pixel"
+        style={{
+          fontSize: '0.75rem',
+          letterSpacing: '1.5px',
+          color: 'var(--accent2)',
+          textShadow: '0 0 12px rgba(0,240,255,0.5)',
+          marginBottom: '1rem',
+        }}
+      >
+        {title}
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+          gap: '1.25rem',
+        }}
+      >
+        {cards.map((c) => (
+          <CardLink key={c.to} card={c} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function Landing() {
   return (
@@ -60,51 +132,9 @@ export default function Landing() {
         </h1>
         <p className="status">A pile of vibe-coded games. Now with solvers.</p>
       </header>
-      <main
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-          gap: '1.25rem',
-        }}
-      >
-        {GAMES.map((g) => {
-          const inner = (
-            <>
-              <div style={{ fontSize: '2.6rem' }}>{g.emoji}</div>
-              <h2 style={{ fontSize: '1.3rem', margin: '0.85rem 0 0.35rem' }}>{g.title}</h2>
-              <p className="status" style={{ margin: 0 }}>
-                {g.blurb}
-              </p>
-              <div
-                style={{ marginTop: '0.9rem', display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}
-              >
-                {g.tags.map((t) => (
-                  <span key={t} style={{ fontSize: '0.7rem', color: 'var(--accent2)' }}>
-                    #{t}
-                  </span>
-                ))}
-              </div>
-            </>
-          );
-          const style = {
-            background: 'var(--card)',
-            border: '1px solid rgba(255,61,240,0.18)',
-            borderRadius: '18px',
-            padding: '1.4rem',
-            textDecoration: 'none',
-            color: 'inherit',
-            display: 'block',
-          } as const;
-          return g.external ? (
-            <a key={g.to} href={g.to} style={style}>
-              {inner}
-            </a>
-          ) : (
-            <Link key={g.to} to={g.to} style={style}>
-              {inner}
-            </Link>
-          );
-        })}
+      <main>
+        <Section title="▸ GAMES" cards={GAMES} />
+        <Section title="▸ GAMING TOOLS" cards={TOOLS} />
       </main>
       <footer
         style={{

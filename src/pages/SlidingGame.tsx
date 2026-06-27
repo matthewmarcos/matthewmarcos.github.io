@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PageShell from '../components/PageShell';
 import BoardGrid from '../components/BoardGrid';
 import { useStepPlayer } from '../components/useStepPlayer';
@@ -18,6 +18,11 @@ export default function SlidingGame() {
 
   const solved = isSolved(board, n);
   const movable = new Set(legalMoves(board, n));
+
+  // Clear the red highlight once the puzzle is solved.
+  useEffect(() => {
+    if (solved) setHint(null);
+  }, [solved]);
 
   function reset(size: number) {
     player.stop();
@@ -40,10 +45,23 @@ export default function SlidingGame() {
     setError('');
     try {
       const moves = solveSliding(board, n);
-      player.play(moves, (tile) => setBoard((b) => applyMove(b, tile, n)), 500);
+      // Flash each tile red the instant the auto-solver slides it.
+      player.play(
+        moves,
+        (tile) => {
+          setHint(tile);
+          setBoard((b) => applyMove(b, tile, n));
+        },
+        500,
+      );
     } catch (e) {
       setError((e as Error).message);
     }
+  }
+
+  function handleStop() {
+    player.stop();
+    setHint(null);
   }
 
   function handleHelp() {
@@ -110,7 +128,8 @@ export default function SlidingGame() {
               fontFamily: "'Press Start 2P', monospace",
               fontSize: '0.8rem',
               color: 'var(--bg)',
-              background: tile === 0 ? 'transparent' : 'var(--accent2)',
+              background:
+                tile === 0 ? 'transparent' : hint === tile ? 'var(--hint)' : 'var(--accent2)',
               cursor: movable.has(tile) && !player.running ? 'pointer' : 'default',
             }}
           >
@@ -131,7 +150,7 @@ export default function SlidingGame() {
           Help
         </button>
         {player.running && (
-          <button className="arcade-btn ghost" onClick={player.stop}>
+          <button className="arcade-btn ghost" onClick={handleStop}>
             Stop
           </button>
         )}
