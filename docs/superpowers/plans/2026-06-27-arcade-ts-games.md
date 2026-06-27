@@ -1672,6 +1672,11 @@ describe('tic-tac-toe board', () => {
     expect(winner([...b])).toBe('X');
   });
 
+  it('detects a column win', () => {
+    const b = ['X', null, null, 'X', null, null, 'X', null, null];
+    expect(winner(b as any)).toBe('X');
+  });
+
   it('detects a diagonal win', () => {
     const b = ['O', null, null, null, 'O', null, null, null, 'O'];
     expect(winner(b as any)).toBe('O');
