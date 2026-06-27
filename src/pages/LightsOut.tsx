@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PageShell from '../components/PageShell';
 import BoardGrid from '../components/BoardGrid';
 import { useStepPlayer } from '../components/useStepPlayer';
@@ -13,6 +13,11 @@ export default function LightsOut() {
 
   const solved = isSolved(board);
   const remaining = useMemo(() => solve(board), [board]);
+
+  // Clear the red highlight once the board is fully cleared.
+  useEffect(() => {
+    if (solved) setHint(null);
+  }, [solved]);
 
   function handlePress(idx: number) {
     if (player.running) return;
@@ -31,8 +36,20 @@ export default function LightsOut() {
   function handleSolve() {
     const sol = solve(board);
     if (!sol || sol.length === 0) return;
+    // Highlight each cell in red the instant the auto-solver clicks it.
+    player.play(
+      sol,
+      (idx) => {
+        setHint(idx);
+        setBoard((b) => press(b, idx));
+      },
+      500,
+    );
+  }
+
+  function handleStop() {
+    player.stop();
     setHint(null);
-    player.play(sol, (idx) => setBoard((b) => press(b, idx)), 500);
   }
 
   function handleHelp() {
@@ -46,6 +63,32 @@ export default function LightsOut() {
       title="💡 Lights Out"
       subtitle="Turn every light off. Pressing a cell flips it and its neighbors."
     >
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '2.5rem',
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <div className="pixel" style={{ fontSize: '2.4rem', color: 'var(--accent2)' }}>
+            {clicks}
+          </div>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '1px', color: 'var(--muted)' }}>
+            CLICKS
+          </div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div className="pixel" style={{ fontSize: '2.4rem', color: 'var(--accent3)' }}>
+            {solved ? 0 : (remaining?.length ?? '—')}
+          </div>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '1px', color: 'var(--muted)' }}>
+            TO SOLVE
+          </div>
+        </div>
+      </div>
+
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <BoardGrid n={SIZE} cellPx={56}>
           {board.map((lit, idx) => {
@@ -84,7 +127,7 @@ export default function LightsOut() {
           Help
         </button>
         {player.running && (
-          <button className="arcade-btn ghost" onClick={player.stop}>
+          <button className="arcade-btn ghost" onClick={handleStop}>
             Stop
           </button>
         )}
@@ -93,18 +136,11 @@ export default function LightsOut() {
         </button>
       </div>
 
-      <p className="status" style={{ textAlign: 'center' }}>
-        Your clicks: <strong>{clicks}</strong>
-        {' · '}
-        {solved ? (
-          '✨ Solved!'
-        ) : (
-          <>
-            <strong>{remaining ? remaining.length : '—'}</strong> clicks left if you follow the
-            solution
-          </>
-        )}
-      </p>
+      {solved && (
+        <p className="status" style={{ textAlign: 'center' }}>
+          ✨ Solved!
+        </p>
+      )}
     </PageShell>
   );
 }
