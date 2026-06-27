@@ -1,0 +1,21 @@
+#!/bin/sh
+# Shared pre-commit hook. Activated automatically for anyone who runs
+# `npm install` after cloning (the package.json "prepare" script points
+# git's core.hooksPath at this directory). Runs the same lint + type
+# checks as CI so broken code never gets committed.
+
+echo "▶ pre-commit: running lint + typecheck…"
+
+if ! npm run --silent lint; then
+  echo "" >&2
+  echo "✖ Lint/format check failed. Fix it (try: npm run format) and re-commit." >&2
+  exit 1
+fi
+
+if ! npm run --silent typecheck; then
+  echo "" >&2
+  echo "✖ Typecheck failed. Fix the errors above and re-commit." >&2
+  exit 1
+fi
+
+echo "✓ pre-commit checks passed"
