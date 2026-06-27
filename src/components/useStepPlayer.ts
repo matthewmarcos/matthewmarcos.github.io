@@ -28,7 +28,7 @@ export function useStepPlayer<T>() {
         if (i >= items.length) stop();
       }, intervalMs);
     },
-    [stop]
+    [stop],
   );
 
   useEffect(() => stop, [stop]);

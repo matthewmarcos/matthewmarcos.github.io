@@ -1,6 +1,4 @@
-import {
-  type SlideBoard, isSolved, applyMove, legalMoves, isSolvable,
-} from './board';
+import { type SlideBoard, isSolved, applyMove, legalMoves, isSolvable } from './board';
 
 // Manhattan distance + linear-conflict heuristic (admissible & consistent).
 function heuristic(b: SlideBoard, n: number): number {

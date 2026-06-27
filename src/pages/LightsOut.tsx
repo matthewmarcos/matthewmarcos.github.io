@@ -39,7 +39,10 @@ export default function LightsOut() {
   }
 
   return (
-    <PageShell title="💡 Lights Out" subtitle="Turn every light off. Pressing a cell flips it and its neighbors.">
+    <PageShell
+      title="💡 Lights Out"
+      subtitle="Turn every light off. Pressing a cell flips it and its neighbors."
+    >
       <BoardGrid n={SIZE} cellPx={56}>
         {board.map((lit, idx) => (
           <button
@@ -58,10 +61,24 @@ export default function LightsOut() {
       </BoardGrid>
 
       <div className="controls">
-        <button className="arcade-btn" onClick={handleSolve} disabled={player.running || solved}>Solve</button>
-        <button className="arcade-btn secondary" onClick={handleHelp} disabled={player.running || solved}>Help</button>
-        {player.running && <button className="arcade-btn ghost" onClick={player.stop}>Stop</button>}
-        <button className="arcade-btn ghost" onClick={handleNew}>New board</button>
+        <button className="arcade-btn" onClick={handleSolve} disabled={player.running || solved}>
+          Solve
+        </button>
+        <button
+          className="arcade-btn secondary"
+          onClick={handleHelp}
+          disabled={player.running || solved}
+        >
+          Help
+        </button>
+        {player.running && (
+          <button className="arcade-btn ghost" onClick={player.stop}>
+            Stop
+          </button>
+        )}
+        <button className="arcade-btn ghost" onClick={handleNew}>
+          New board
+        </button>
       </div>
 
       <p className="status">

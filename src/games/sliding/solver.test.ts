@@ -20,7 +20,7 @@ describe('sliding solver', () => {
 
   it('solves random 3x3 scrambles (each move legal, reaches goal)', () => {
     let seed = 3;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     for (let t = 0; t < 30; t++) {
       const start = shuffle(3, 50, rand);
       const moves = solveSliding(start, 3);
@@ -30,7 +30,7 @@ describe('sliding solver', () => {
 
   it('solves random 4x4 scrambles', () => {
     let seed = 99;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     for (let t = 0; t < 5; t++) {
       const start = shuffle(4, 40, rand);
       const moves = solveSliding(start, 4);

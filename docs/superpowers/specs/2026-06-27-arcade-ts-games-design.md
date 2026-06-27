@@ -80,13 +80,13 @@ and the boundaries clear: a page renders state and dispatches user intent; a
 
 ## Routes
 
-| Route | Page | Description |
-|-------|------|-------------|
-| `/` | Landing | Arcade home; reuses the existing neon aesthetic. Cards link to each game (including Poop Patrol). |
-| `/lights-out` | LightsOut | Playable 5×5 Lights Out with **Solve** (animated) and **Help** (one-step hint). |
-| `/sliding` | SlidingGame | Playable sliding puzzle, 3×3 / 4×4 toggle, shuffle, **Solve** (animated) and **Help**. |
-| `/sliding-solver` | SlidingSolver | Standalone tool: type any board, get the ordered click list out. |
-| `/tic-tac-toe` | TicTacToe | Play vs unbeatable computer; choose side / who starts. |
+| Route             | Page          | Description                                                                                       |
+| ----------------- | ------------- | ------------------------------------------------------------------------------------------------- |
+| `/`               | Landing       | Arcade home; reuses the existing neon aesthetic. Cards link to each game (including Poop Patrol). |
+| `/lights-out`     | LightsOut     | Playable 5×5 Lights Out with **Solve** (animated) and **Help** (one-step hint).                   |
+| `/sliding`        | SlidingGame   | Playable sliding puzzle, 3×3 / 4×4 toggle, shuffle, **Solve** (animated) and **Help**.            |
+| `/sliding-solver` | SlidingSolver | Standalone tool: type any board, get the ordered click list out.                                  |
+| `/tic-tac-toe`    | TicTacToe     | Play vs unbeatable computer; choose side / who starts.                                            |
 
 ## Game Specifications
 

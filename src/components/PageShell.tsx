@@ -12,9 +12,15 @@ export default function PageShell({
 }) {
   return (
     <div className="wrap">
-      <Link to="/" className="back-link">← Arcade</Link>
+      <Link to="/" className="back-link">
+        ← Arcade
+      </Link>
       <h1 style={{ fontSize: 'clamp(1.2rem, 4vw, 2rem)', marginBottom: '0.5rem' }}>{title}</h1>
-      {subtitle && <p className="status" style={{ marginBottom: '1.5rem' }}>{subtitle}</p>}
+      {subtitle && (
+        <p className="status" style={{ marginBottom: '1.5rem' }}>
+          {subtitle}
+        </p>
+      )}
       {children}
     </div>
   );

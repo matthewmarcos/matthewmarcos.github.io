@@ -52,10 +52,17 @@ export default function SlidingGame() {
   }
 
   return (
-    <PageShell title="🧩 Sliding Puzzle" subtitle="Slide tiles into order. Let it auto-solve or ask for one hint.">
+    <PageShell
+      title="🧩 Sliding Puzzle"
+      subtitle="Slide tiles into order. Let it auto-solve or ask for one hint."
+    >
       <div className="controls">
-        <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => reset(3)}>3×3</button>
-        <button className={`arcade-btn ${n === 4 ? '' : 'ghost'}`} onClick={() => reset(4)}>4×4</button>
+        <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => reset(3)}>
+          3×3
+        </button>
+        <button className={`arcade-btn ${n === 4 ? '' : 'ghost'}`} onClick={() => reset(4)}>
+          4×4
+        </button>
       </div>
 
       <BoardGrid n={n} cellPx={64}>
@@ -80,13 +87,33 @@ export default function SlidingGame() {
       </BoardGrid>
 
       <div className="controls">
-        <button className="arcade-btn" onClick={handleSolve} disabled={player.running || solved}>Solve</button>
-        <button className="arcade-btn secondary" onClick={handleHelp} disabled={player.running || solved}>Help</button>
-        {player.running && <button className="arcade-btn ghost" onClick={player.stop}>Stop</button>}
-        <button className="arcade-btn ghost" onClick={() => reset(n)}>Shuffle</button>
+        <button className="arcade-btn" onClick={handleSolve} disabled={player.running || solved}>
+          Solve
+        </button>
+        <button
+          className="arcade-btn secondary"
+          onClick={handleHelp}
+          disabled={player.running || solved}
+        >
+          Help
+        </button>
+        {player.running && (
+          <button className="arcade-btn ghost" onClick={player.stop}>
+            Stop
+          </button>
+        )}
+        <button className="arcade-btn ghost" onClick={() => reset(n)}>
+          Shuffle
+        </button>
       </div>
 
-      <p className="status">{error ? `⚠ ${error}` : solved ? '✨ Solved!' : `${n}×${n} — ${player.running ? 'solving…' : 'your move'}`}</p>
+      <p className="status">
+        {error
+          ? `⚠ ${error}`
+          : solved
+            ? '✨ Solved!'
+            : `${n}×${n} — ${player.running ? 'solving…' : 'your move'}`}
+      </p>
     </PageShell>
   );
 }

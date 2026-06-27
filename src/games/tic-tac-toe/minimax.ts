@@ -7,7 +7,7 @@ function minimax(
   me: Player,
   depth: number,
   alpha: number,
-  beta: number
+  beta: number,
 ): number {
   const w = winner(board);
   if (w === me) return 10 - depth;

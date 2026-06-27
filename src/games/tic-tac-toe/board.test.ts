@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { emptyBoard, winner, availableMoves, other } from './board';
+import { emptyBoard, winner, availableMoves, other, type TTTBoard } from './board';
 
 describe('tic-tac-toe board', () => {
   it('empty board: no winner, nine moves', () => {
@@ -14,18 +14,18 @@ describe('tic-tac-toe board', () => {
   });
 
   it('detects a column win', () => {
-    const b = ['X', null, null, 'X', null, null, 'X', null, null];
-    expect(winner(b as any)).toBe('X');
+    const b: TTTBoard = ['X', null, null, 'X', null, null, 'X', null, null];
+    expect(winner(b)).toBe('X');
   });
 
   it('detects a diagonal win', () => {
-    const b = ['O', null, null, null, 'O', null, null, null, 'O'];
-    expect(winner(b as any)).toBe('O');
+    const b: TTTBoard = ['O', null, null, null, 'O', null, null, null, 'O'];
+    expect(winner(b)).toBe('O');
   });
 
   it('detects a draw', () => {
-    const b = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
-    expect(winner(b as any)).toBe('draw');
+    const b: TTTBoard = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
+    expect(winner(b)).toBe('draw');
   });
 
   it('other flips the player', () => {

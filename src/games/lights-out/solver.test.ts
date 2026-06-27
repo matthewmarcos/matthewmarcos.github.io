@@ -15,7 +15,7 @@ describe('lights-out solver', () => {
 
   it('solution actually turns off every randomly generated board', () => {
     let seed = 42;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     for (let t = 0; t < 50; t++) {
       const b = randomBoard(15, rand);
       const sol = solve(b);

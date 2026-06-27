@@ -53,11 +53,28 @@ export default function TicTacToe() {
   return (
     <PageShell title="⭕ Tic-Tac-Toe" subtitle="The computer plays perfectly. It will never lose.">
       <div className="controls">
-        <button className={`arcade-btn ${human === 'X' ? '' : 'ghost'}`} onClick={() => newGame('X')}>Play as X (first)</button>
-        <button className={`arcade-btn ${human === 'O' ? '' : 'ghost'}`} onClick={() => newGame('O')}>Play as O</button>
+        <button
+          className={`arcade-btn ${human === 'X' ? '' : 'ghost'}`}
+          onClick={() => newGame('X')}
+        >
+          Play as X (first)
+        </button>
+        <button
+          className={`arcade-btn ${human === 'O' ? '' : 'ghost'}`}
+          onClick={() => newGame('O')}
+        >
+          Play as O
+        </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 80px)', gap: '6px', width: 'max-content' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 80px)',
+          gap: '6px',
+          width: 'max-content',
+        }}
+      >
         {board.map((cell, i) => (
           <button
             key={i}
@@ -79,7 +96,9 @@ export default function TicTacToe() {
       </div>
 
       <div className="controls">
-        <button className="arcade-btn ghost" onClick={() => newGame(human)}>New game</button>
+        <button className="arcade-btn ghost" onClick={() => newGame(human)}>
+          New game
+        </button>
       </div>
       <p className="status">{message}</p>
     </PageShell>

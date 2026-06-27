@@ -6,7 +6,9 @@ import { solveSliding } from '../games/sliding/solver';
 
 export default function SlidingSolver() {
   const [n, setN] = useState(3);
-  const [cells, setCells] = useState<string[]>(() => goal(3).map((v) => (v === 0 ? '' : String(v))));
+  const [cells, setCells] = useState<string[]>(() =>
+    goal(3).map((v) => (v === 0 ? '' : String(v))),
+  );
   const [result, setResult] = useState<number[] | null>(null);
   const [error, setError] = useState('');
 
@@ -37,7 +39,9 @@ export default function SlidingSolver() {
   function handleSolve() {
     const board = parseBoard();
     if (!board) {
-      setError(`Enter each number 1–${n * n - 1} exactly once, leaving one cell blank for the gap.`);
+      setError(
+        `Enter each number 1–${n * n - 1} exactly once, leaving one cell blank for the gap.`,
+      );
       setResult(null);
       return;
     }
@@ -56,8 +60,12 @@ export default function SlidingSolver() {
       subtitle="Type your board (leave the gap blank), then get the exact tiles to click in order."
     >
       <div className="controls">
-        <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => resize(3)}>3×3</button>
-        <button className={`arcade-btn ${n === 4 ? '' : 'ghost'}`} onClick={() => resize(4)}>4×4</button>
+        <button className={`arcade-btn ${n === 3 ? '' : 'ghost'}`} onClick={() => resize(3)}>
+          3×3
+        </button>
+        <button className={`arcade-btn ${n === 4 ? '' : 'ghost'}`} onClick={() => resize(4)}>
+          4×4
+        </button>
       </div>
 
       <BoardGrid n={n} cellPx={64}>
@@ -82,7 +90,9 @@ export default function SlidingSolver() {
       </BoardGrid>
 
       <div className="controls">
-        <button className="arcade-btn" onClick={handleSolve}>Solve</button>
+        <button className="arcade-btn" onClick={handleSolve}>
+          Solve
+        </button>
       </div>
 
       {error && <p className="status">⚠ {error}</p>}
@@ -93,7 +103,9 @@ export default function SlidingSolver() {
           ) : (
             <>
               <strong>{result.length} clicks:</strong>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.5rem' }}>
+              <div
+                style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.5rem' }}
+              >
                 {result.map((tile, i) => (
                   <span
                     key={i}

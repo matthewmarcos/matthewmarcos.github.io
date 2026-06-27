@@ -1,7 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  goal, isSolved, legalMoves, applyMove, isSolvable, shuffle, blankIndex,
-} from './board';
+import { goal, isSolved, legalMoves, applyMove, isSolvable, shuffle, blankIndex } from './board';
 
 describe('sliding board', () => {
   it('goal board is solved', () => {
@@ -39,7 +37,7 @@ describe('sliding board', () => {
 
   it('shuffle always yields a solvable board', () => {
     let seed = 7;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     for (let t = 0; t < 20; t++) {
       expect(isSolvable(shuffle(3, 40, rand), 3)).toBe(true);
       expect(isSolvable(shuffle(4, 60, rand), 4)).toBe(true);

@@ -28,7 +28,7 @@ describe('lights-out board', () => {
 
   it('randomBoard with a fixed rng is reproducible and solvable-by-construction', () => {
     let seed = 1;
-    const rand = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+    const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
     const b = randomBoard(10, rand);
     expect(b).toHaveLength(25);
   });
