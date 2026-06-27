@@ -8,6 +8,7 @@ import { solve } from '../games/lights-out/solver';
 export default function LightsOut() {
   const [board, setBoard] = useState<LightsBoard>(() => randomBoard(8));
   const [hint, setHint] = useState<number | null>(null);
+  const [clicks, setClicks] = useState(0);
   const player = useStepPlayer<number>();
 
   const solved = isSolved(board);
@@ -16,12 +17,14 @@ export default function LightsOut() {
   function handlePress(idx: number) {
     if (player.running) return;
     setHint(null);
+    setClicks((c) => c + 1);
     setBoard((b) => press(b, idx));
   }
 
   function handleNew() {
     player.stop();
     setHint(null);
+    setClicks(0);
     setBoard(randomBoard(8));
   }
 
@@ -43,24 +46,33 @@ export default function LightsOut() {
       title="💡 Lights Out"
       subtitle="Turn every light off. Pressing a cell flips it and its neighbors."
     >
-      <BoardGrid n={SIZE} cellPx={56}>
-        {board.map((lit, idx) => (
-          <button
-            key={idx}
-            className={`cell${hint === idx ? ' hint' : ''}`}
-            onClick={() => handlePress(idx)}
-            style={{
-              height: 56,
-              border: 'none',
-              background: lit ? 'var(--accent3)' : 'var(--card)',
-              boxShadow: lit ? '0 0 14px var(--accent3)' : undefined,
-            }}
-            aria-label={`cell ${idx} ${lit ? 'on' : 'off'}`}
-          />
-        ))}
-      </BoardGrid>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <BoardGrid n={SIZE} cellPx={56}>
+          {board.map((lit, idx) => {
+            const isHint = hint === idx;
+            return (
+              <button
+                key={idx}
+                className={`cell${isHint ? ' hint' : ''}`}
+                onClick={() => handlePress(idx)}
+                style={{
+                  height: 56,
+                  border: 'none',
+                  background: isHint ? 'var(--hint)' : lit ? 'var(--accent3)' : 'var(--card)',
+                  boxShadow: isHint
+                    ? '0 0 18px var(--hint)'
+                    : lit
+                      ? '0 0 14px var(--accent3)'
+                      : undefined,
+                }}
+                aria-label={`cell ${idx} ${lit ? 'on' : 'off'}${isHint ? ' (click next)' : ''}`}
+              />
+            );
+          })}
+        </BoardGrid>
+      </div>
 
-      <div className="controls">
+      <div className="controls" style={{ justifyContent: 'center' }}>
         <button className="arcade-btn" onClick={handleSolve} disabled={player.running || solved}>
           Solve
         </button>
@@ -81,8 +93,17 @@ export default function LightsOut() {
         </button>
       </div>
 
-      <p className="status">
-        {solved ? '✨ Solved!' : `${remaining ? remaining.length : '—'} clicks to solve.`}
+      <p className="status" style={{ textAlign: 'center' }}>
+        Your clicks: <strong>{clicks}</strong>
+        {' · '}
+        {solved ? (
+          '✨ Solved!'
+        ) : (
+          <>
+            <strong>{remaining ? remaining.length : '—'}</strong> clicks left if you follow the
+            solution
+          </>
+        )}
       </p>
     </PageShell>
   );

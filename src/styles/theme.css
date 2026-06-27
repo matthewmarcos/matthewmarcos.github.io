@@ -5,6 +5,7 @@
   --accent: #ff3df0;
   --accent2: #00f0ff;
   --accent3: #ffe14d;
+  --hint: #ff1f4f;
   --text: #f3eaff;
   --muted: #9d86c9;
 }
@@ -95,6 +96,6 @@ h2,
 }
 .cell.hint {
   box-shadow:
-    0 0 0 3px var(--accent3),
-    0 0 18px var(--accent3);
+    0 0 0 3px var(--hint),
+    0 0 18px var(--hint);
 }
