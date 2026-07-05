@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRO SQUAD</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="hud">
+        <div id="hp-wrap">
+          <span>HP</span>
+          <div id="hp-bar-track"><div id="hp-bar-fill"></div></div>
+          <span id="hp-text">100/100</span>
+        </div>
+        <div>GOLD <span id="gold-text" class="gold">0</span></div>
+        <div>LEVEL <span id="level-text" class="accent">1</span></div>
+        <div>ENEMIES <span id="enemy-count">0</span></div>
+      </div>
+
+      <div id="stage">
+        <canvas id="canvas"></canvas>
+        <div id="banner"></div>
+
+        <div id="clear-overlay">
+          <div class="clear-word">CLEAR</div>
+          <div id="clear-countdown" class="clear-countdown">next level in 3</div>
+        </div>
+
+        <div class="overlay" id="start-screen">
+          <h1>BRO SQUAD</h1>
+          <p>
+            Top-down permadeath runs on islands bigger than the screen — the view scrolls with you.
+            Move with <span class="key">WASD</span>, aim with the <span class="key">mouse</span>;
+            your gun fires on its own, no ammo to manage. Your Bro trails behind you and auto-fires
+            at nearby enemies. A dark blue border walls off the edge of the world, so you can't
+            wander off by accident.
+            <span class="warn"
+              >Inside it, black chasm pits are real: step in and you fall, permanently.</span
+            >
+            Orange lava drains HP the longer you stand in it — and enemies take both hazards too, if
+            you lead them there. Clear every enemy to advance. HP and gold carry between levels;
+            dying resets the whole run.
+          </p>
+          <button id="start-btn">Start Run</button>
+          <p class="credit">Inspired by Gun Bros (early iOS)</p>
+        </div>
+
+        <div class="overlay hidden" id="game-over-screen">
+          <h1 id="game-over-headline">RUN OVER</h1>
+          <p id="game-over-flavor"></p>
+          <p class="stat" id="game-over-stats"></p>
+          <button id="restart-btn">Start New Run</button>
+        </div>
+      </div>
+
+      <div id="legend">
+        <span style="color: var(--accent)">■</span> you &nbsp;
+        <span style="color: var(--bro)">■</span> bro (auto-follow, auto-fire, can't fall in or burn)
+        &nbsp; <span style="color: var(--enemy-grunt)">●</span> grunt &nbsp;
+        <span style="color: var(--enemy-runner)">●</span> runner &nbsp;
+        <span style="color: var(--enemy-brute)">●</span> brute &nbsp;
+        <span style="color: var(--accent-2)">●</span> gold &nbsp;
+        <span class="swatch" style="background: var(--border)">border</span> solid, safe &nbsp;
+        <span class="swatch" style="background: #333">black pit</span> chasm, lethal &nbsp;
+        <span class="swatch" style="background: var(--lava-bright)">orange</span> lava, drains HP
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

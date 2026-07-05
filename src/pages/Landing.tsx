@@ -6,6 +6,7 @@ type Card = {
   title: string;
   blurb: string;
   tags: string[];
+  inspiredBy?: string;
   external?: boolean;
 };
 
@@ -18,6 +19,16 @@ const GAMES: Card[] = [
     title: 'Poop Patrol',
     blurb: 'Splat-em-up chaos. Patrol the streets and clean up.',
     tags: ['arcade', 'reflex'],
+    inspiredBy: 'Damn Birds 1 (mofunzone)',
+    external: true,
+  },
+  {
+    to: '/bro-squad/index.html',
+    emoji: '🤙',
+    title: 'Bro Squad',
+    blurb: 'Twin-stick permadeath runs across procedural islands, Bro in tow.',
+    tags: ['twin-stick', 'roguelite'],
+    inspiredBy: 'Gun Bros (early iOS)',
     external: true,
   },
   {
@@ -68,6 +79,18 @@ function CardLink({ card }: { card: Card }) {
           </span>
         ))}
       </div>
+      {card.inspiredBy && (
+        <p
+          style={{
+            margin: '0.6rem 0 0',
+            fontSize: '0.7rem',
+            fontStyle: 'italic',
+            color: 'var(--muted)',
+          }}
+        >
+          inspired by {card.inspiredBy}
+        </p>
+      )}
     </>
   );
   const style = {
