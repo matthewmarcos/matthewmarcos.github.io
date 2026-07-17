@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catherine's ENT Notes</title>
+    <style>
+      :root {
+        --ink: #1a1f26;
+        --muted: #5b6675;
+        --line: #dfe4ec;
+        --accent: #1f6feb;
+        --soft: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #fbfcfe;
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 48px 22px 60px;
+      }
+      h1 {
+        font-size: 27px;
+        margin: 0 0 6px;
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 28px;
+      }
+      a.card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin: 0 0 16px;
+        transition: 0.15s;
+      }
+      a.card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 4px 18px rgba(31, 111, 235, 0.1);
+        transform: translateY(-1px);
+      }
+      .card h2 {
+        margin: 0 0 4px;
+        font-size: 18px;
+        color: var(--accent);
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .pill {
+        font-size: 12.5px;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 20px;
+        padding: 5px 12px;
+        text-decoration: none;
+      }
+      .pill:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+      footer {
+        color: var(--muted);
+        font-size: 12.5px;
+        margin-top: 26px;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Catherine's ENT Study Notes</h1>
+      <p class="sub">
+        Head &amp; Neck Surgery — transcribed, corrected, and turned into an exam reviewer.
+      </p>
+
+      <a class="card" href="ent-reviewer.html">
+        <h2>High-Yield Reviewer &nbsp;›</h2>
+        <p>
+          Reorganized, Cummings-aligned reviewer: tables, pearls, consultant "pimp" questions, gold
+          standards, and red flags. Best for rapid studying.
+        </p>
+      </a>
+      <div class="row" style="margin: -8px 0 20px 4px">
+        <a class="pill" href="ent-reviewer.pdf">⬇ Download PDF version</a>
+      </div>
+
+      <a class="card" href="ent-head-neck-notes.html">
+        <h2>Original Notes — Verbatim + Interpretation &nbsp;›</h2>
+        <p>
+          Page-by-page transcription of the handwritten notebook, with a plain-English
+          interpretation of each page and the assignments / duty endorsements filtered out.
+        </p>
+      </a>
+
+      <footer>
+        Content reviewed against ACR TI-RADS, the 2017 Bethesda System, and AAO-HNS guidance. For
+        anything edition-specific, defer to the current edition of Cummings Otolaryngology.
+      </footer>
+    </div>
+  </body>
+</html>
