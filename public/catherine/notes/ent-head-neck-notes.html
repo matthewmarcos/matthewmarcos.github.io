@@ -1,0 +1,1441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENT / Head &amp; Neck Study Notes — Transcribed &amp; Augmented</title>
+    <style>
+      :root {
+        --bg: #0f1115;
+        --card: #161a21;
+        --card2: #1b2029;
+        --ink: #e8ecf1;
+        --muted: #9aa4b2;
+        --line: #2a3240;
+        --accent: #5eb0ef;
+        --accent2: #7ee0b8;
+        --warn: #f0b866;
+        --noise: #f08a8a;
+        --verbatim: #c9d4e0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-size: 15px;
+      }
+      header.top {
+        padding: 32px 24px 20px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, #131722, #0f1115);
+      }
+      header.top h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+      }
+      header.top p {
+        margin: 4px 0;
+        color: var(--muted);
+        max-width: 900px;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      .toc {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 20px 0 32px;
+      }
+      .toc h2 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .toc ol {
+        margin: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 32px;
+      }
+      .toc a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .toc a:hover {
+        text-decoration: underline;
+      }
+      section.page {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        margin: 0 0 28px;
+        overflow: hidden;
+        scroll-margin-top: 16px;
+      }
+      .page-head {
+        padding: 14px 20px;
+        background: var(--card2);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .page-head .num {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        border-radius: 6px;
+        padding: 3px 8px;
+        white-space: nowrap;
+      }
+      .page-head h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .page-head .src {
+        margin-left: auto;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .col {
+        padding: 18px 20px;
+      }
+      .col.left {
+        border-right: 1px solid var(--line);
+        background: #12161d;
+      }
+      .col h4 {
+        margin: 0 0 10px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .col.left h4 {
+        color: var(--muted);
+      }
+      .col.right h4 {
+        color: var(--accent2);
+      }
+      .verbatim {
+        font-family: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+        font-size: 13px;
+        color: var(--verbatim);
+        white-space: pre-wrap;
+        line-height: 1.55;
+      }
+      .col.right p {
+        margin: 0 0 10px;
+      }
+      .col.right ul {
+        margin: 0 0 12px;
+        padding-left: 18px;
+      }
+      .col.right li {
+        margin: 3px 0;
+      }
+      .col.right h5 {
+        margin: 14px 0 4px;
+        font-size: 13px;
+        color: var(--accent);
+      }
+      .noise {
+        margin: 0;
+        padding: 12px 20px;
+        background: rgba(240, 138, 138, 0.08);
+        border-top: 1px dashed var(--noise);
+        font-size: 13px;
+        color: #f4b6b6;
+      }
+      .noise b {
+        color: var(--noise);
+      }
+      .tag {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 5px;
+        margin-right: 6px;
+        vertical-align: middle;
+      }
+      .tag.assign {
+        background: rgba(240, 184, 102, 0.18);
+        color: var(--warn);
+        border: 1px solid rgba(240, 184, 102, 0.4);
+      }
+      .tag.endo {
+        background: rgba(240, 138, 138, 0.15);
+        color: var(--noise);
+        border: 1px solid rgba(240, 138, 138, 0.4);
+      }
+      .verified {
+        background: rgba(126, 224, 184, 0.08);
+        border-left: 3px solid var(--accent2);
+        padding: 8px 12px;
+        border-radius: 0 8px 8px 0;
+        margin: 10px 0;
+        font-size: 13px;
+      }
+      .verified b {
+        color: var(--accent2);
+      }
+      table.mini {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0 12px;
+        font-size: 12.5px;
+      }
+      table.mini th,
+      table.mini td {
+        border: 1px solid var(--line);
+        padding: 5px 7px;
+        text-align: left;
+        vertical-align: top;
+      }
+      table.mini th {
+        background: var(--card2);
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .legend {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+      footer {
+        padding: 28px 24px;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+        border-top: 1px solid var(--line);
+      }
+      footer a {
+        color: var(--accent);
+      }
+      @media (max-width: 820px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+        .col.left {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+        .toc ol {
+          columns: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <h1>ENT / Head &amp; Neck Surgery — Study Notes</h1>
+      <p>
+        Transcribed and augmented from 13 handwritten notebook pages for residency exam review
+        (Philippines). Each section is one physical page. <b>Left</b> = verbatim best-effort
+        transcription of what's on the page (illegible words marked <code>[?]</code>).
+        <b>Right</b> = cleaned-up, medically corrected interpretation with facts checked against
+        current references.
+      </p>
+      <p>
+        Pages are reordered into a topic flow rather than notebook order: embryology &amp; clefts
+        &rarr; rhinology/sinus &rarr; orbit &amp; facial fractures &rarr; oral cavity/neck &rarr;
+        salivary/facial nerve &rarr; thyroid.
+      </p>
+      <div class="legend">
+        <span
+          ><span class="dot" style="background: var(--accent2)"></span>Verified against
+          references</span
+        >
+        <span
+          ><span class="dot" style="background: var(--warn)"></span>Assignment / homework
+          (noise)</span
+        >
+        <span
+          ><span class="dot" style="background: var(--noise)"></span>Patient endorsement / handoff
+          (noise)</span
+        >
+      </div>
+    </header>
+
+    <div class="wrap">
+      <nav class="toc">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#p1">Facial &amp; palate embryology</a></li>
+          <li><a href="#p2">Embryology recap &amp; palatogenesis</a></li>
+          <li><a href="#p3">Cleft lip/palate classification &amp; surgical timeline</a></li>
+          <li><a href="#p4">Cleft palate teratogens, bifid uvula, submucous cleft</a></li>
+          <li><a href="#p5">Palate &amp; cleft-lip repair techniques</a></li>
+          <li><a href="#p6">Nasal &amp; sinus anatomy, maxillectomy, tonsils</a></li>
+          <li><a href="#p7">FESS, ethmoid lamellae, CT anatomic variations</a></li>
+          <li><a href="#p8">Nasal polyps, Lund-Mackay, CRS medical management</a></li>
+          <li><a href="#p9">Orbital complications (Chandler), ZMC fracture</a></li>
+          <li><a href="#p10">Oral cavity subsites, neck dissection, tongue, flaps</a></li>
+          <li><a href="#p11">Salivary glands, facial nerve, JNA</a></li>
+          <li><a href="#p12">Le Fort, Bethesda system, TI-RADS</a></li>
+          <li><a href="#p13">Thyroid cancers &amp; Le Fort fractures</a></li>
+        </ol>
+      </nav>
+
+      <!-- PAGE 1 -->
+      <section class="page" id="p1">
+        <div class="page-head">
+          <span class="num">PAGE 1</span>
+          <h3>Facial &amp; palate embryology</h3>
+          <span class="src">src/…616278.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              zygomatic arch, pterygoid plates, nasal septum (1) 4th: frontonasal &rarr; 1 maxillary
+              process &rarr; 2 mandibular &rarr; 2 [?] 5th: frontonasal &rarr; nasal pit at 5th week
+              medial + lateral nasal proc 6th: medial &rarr; give maxillary &rarr; upper lip medial
+              – medial upper lip = philtrum, columella, philtrum fusion of frontonasal fusion up to
+              1° &amp; 2° palate ends at 12th week at uvula Lip – 10th week Palate – 12th week 2°
+              palate starts w/ fusion of palatal shelves of maxillary prominence 1° palate =
+              intermaxillary Pierre Robin – macroglossia &rarr; cleft palate? won't fuse – more
+              common in F than male, cleft palate
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <p>
+              Timeline of facial and palatal development, mapping which facial prominence
+              contributes what, and when fusion completes.
+            </p>
+            <h5>Prominences by week</h5>
+            <ul>
+              <li>
+                <b>Week 4:</b> the five facial prominences appear — 1 frontonasal, paired (2)
+                maxillary, paired (2) mandibular prominences.
+              </li>
+              <li>
+                <b>Week 5:</b> nasal (olfactory) placodes invaginate to form <b>nasal pits</b>,
+                splitting the frontonasal prominence into <b>medial</b> and
+                <b>lateral nasal prominences</b>.
+              </li>
+              <li>
+                <b>Weeks 6–7:</b> maxillary prominences grow medially and fuse with the medial nasal
+                prominences to form the <b>upper lip</b>. Merged medial nasal prominences form the
+                <b>philtrum, columella, and primary palate (intermaxillary segment)</b>.
+              </li>
+            </ul>
+            <h5>Palate</h5>
+            <ul>
+              <li>
+                <b>Primary palate</b> = intermaxillary segment (from fused medial nasal
+                prominences); becomes the pre-maxilla anterior to the incisive foramen.
+              </li>
+              <li>
+                <b>Secondary palate</b> = fusion of the
+                <b>palatal shelves of the maxillary prominences</b>, closing anterior&rarr;posterior
+                and ending at the <b>uvula (~week 12)</b>.
+              </li>
+              <li>Lip fusion ~week 10; palate fusion completes ~week 12.</li>
+            </ul>
+            <div class="verified">
+              <b>Verified:</b> Any Le Fort fracture by definition involves the
+              <b>pterygoid plates</b> (top-line list here is a fracture aside). Facial-prominence
+              timing above matches standard embryology (Langman/Moore).
+            </div>
+            <h5>Pierre Robin sequence</h5>
+            <p>
+              Triad: <b>micrognathia &rarr; glossoptosis</b> (tongue falls back — the note's
+              "macroglossia" is a slip; the tongue is normal-sized but posteriorly displaced)
+              <b>&rarr; wide U-shaped cleft palate</b> and airway obstruction. The retropositioned
+              tongue mechanically blocks palatal shelf fusion.
+            </p>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">footer</span><b>"— AVANTI"</b> at the bottom of every page is just
+          the notebook brand imprint — ignore it on all pages.
+        </p>
+      </section>
+
+      <!-- PAGE 2 -->
+      <section class="page" id="p2">
+        <div class="page-head">
+          <span class="num">PAGE 2</span>
+          <h3>Embryology recap (Q&amp;A) &amp; palatogenesis</h3>
+          <span class="src">src/…616288.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              lip, palate, and nose ① What forms per week? 4th – maxillary prominence, frontonasal
+              prominence 5th – lateral nasal prominence medial nasal prominence 6th &amp; 7th –
+              medial nasal prominence ② What structures are involved that fuse? medial nasal
+              prominences – philtrum, medial upper lip, nasal tip, columella maxillary prominences –
+              lateral aspects of the upper lip lateral nasal prominences – nose ③ five facial
+              prominences of the nose frontonasal prominence – bridge 2× medial nasal prominences –
+              [?] columella 2× lateral nasal prominences – nasal alae palatogenesis – 7th &rarr;
+              12th week frontonasal / lateral &amp; medial – maxillary lateral 1° palate – medial 2°
+              [?] maxillary (LIP) 2° palate – ant to posterior lip lang ✓ palate lang ✓ ✗ but di
+              pwede ang hard lang
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <p>
+              Self-test version of Page 1 — the questions she expects to be asked on rounds. Answers
+              cleaned up:
+            </p>
+            <h5>① What forms per week</h5>
+            <p>
+              Wk 4: frontonasal + maxillary prominences present. Wk 5: nasal pits divide frontonasal
+              into medial + lateral nasal prominences. Wk 6–7: medial nasal prominences merge and
+              fuse with maxillary prominences.
+            </p>
+            <h5>② Structures that fuse &rarr; what they become</h5>
+            <table class="mini">
+              <tr>
+                <th>Prominence</th>
+                <th>Forms</th>
+              </tr>
+              <tr>
+                <td>Medial nasal (paired, merged)</td>
+                <td>Philtrum, medial upper lip, nasal tip, columella, primary palate</td>
+              </tr>
+              <tr>
+                <td>Maxillary (paired)</td>
+                <td>Lateral upper lip, cheeks, secondary palate</td>
+              </tr>
+              <tr>
+                <td>Lateral nasal (paired)</td>
+                <td>Alae (sides) of the nose</td>
+              </tr>
+            </table>
+            <h5>③ Five prominences forming the nose</h5>
+            <ul>
+              <li>1 frontonasal &rarr; bridge/dorsum</li>
+              <li>2 medial nasal &rarr; tip &amp; columella</li>
+              <li>2 lateral nasal &rarr; alae</li>
+            </ul>
+            <div class="verified">
+              <b>Verified:</b> Palatogenesis runs weeks ~7–12, closing
+              <b>anterior &rarr; posterior</b>. This is why an isolated
+              <b>soft-palate-only</b> cleft is possible ("palate lang") but a hard-palate cleft
+              without soft-palate involvement is not ("hard lang — di pwede"): closure stops
+              posteriorly, so the soft palate is last to fuse. Taglish notes here just mean "lip
+              only ✓ / soft palate only ✓ / hard palate only ✗."
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">endorsement</span
+          ><b>Right-hand column (patient handoff):</b> Labsing (for pending / Hemovac drain, sabihin
+          sa Bactigras), Centeno (3rd HD, naghahanap ng blood), Beltran (s/p total thyroidectomy —
+          iCa, iPTH), Medina (no carry-outs), Liad (procal once amenable, repeat K after correction,
+          BAS, KUB UTZ, Na/K), Radilla (awaiting sputum GeneXpert). This is duty endorsement, not
+          study content — filtered out of the summary.
+        </p>
+      </section>
+
+      <!-- PAGE 3 -->
+      <section class="page" id="p3">
+        <div class="page-head">
+          <span class="num">PAGE 3</span>
+          <h3>Cleft lip/palate classification &amp; surgical timeline</h3>
+          <span class="src">src/…616286.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Incomplete cleft palate Kernahan-Stark [?] classification / Kernahan striped-Y 0 –
+              unaffected … [scoring] 3 – most affected lips – lips, nasolabial fold, nasal floor
+              [lip diagram] hard palate – incisive foramen = primary palate second palate behind,
+              1/3 incisive foramen [palate diagram] anterior to posterior most common laterality:
+              left Thus: epidemiology / embryology of cleft palate / CL – ax of surgery / timing /
+              per week component / structures involved that fuse / when to advise mother / CS(?)
+              Medina – for OR proposal Primary surgical procedures ① Cheiloplasty – 3 mos – reduced
+              maxillary LENGTH if earlier / maxillary retrusion ② Alveoloplasty – 7–9 y/o – reduced
+              maxillary height – root of permanent canine formed 1/3–2/3 – crown still partially
+              covered by bone (soft, 3 mos) ③ Primary rhinoplasty – 14 F / 16 M ④ Palatoplasty –
+              12–18 mos – >18 to avoid dev. of pathologic compensatory speech patterns
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <p>Classification and the operative timeline for cleft repair.</p>
+            <h5>Classification</h5>
+            <p>
+              The <b>Kernahan "striped-Y"</b> is the classic pictorial scheme: the Y's arms map the
+              lip/alveolus/primary palate and the stem maps the secondary (hard + soft) palate,
+              scored by severity. The incisive foramen is the landmark dividing
+              <b>primary palate (anterior)</b> from <b>secondary palate (posterior)</b>. Clefts
+              close/present <b>anterior &rarr; posterior</b>; the
+              <b>left side is the most common</b> unilateral laterality.
+            </p>
+            <h5>Surgical timeline (augmented, "rule of 10s" context)</h5>
+            <table class="mini">
+              <tr>
+                <th>Procedure</th>
+                <th>Timing</th>
+                <th>Why then</th>
+              </tr>
+              <tr>
+                <td>Cheiloplasty (lip repair)</td>
+                <td>~3 months (Rule of 10: ~10 wks, 10 lb, Hgb 10)</td>
+                <td>Earlier repair risks maxillary retrusion / reduced length</td>
+              </tr>
+              <tr>
+                <td>Palatoplasty</td>
+                <td>~12–18 months</td>
+                <td>
+                  Before speech develops, to avoid compensatory articulation / VPI; delaying past
+                  ~18 mo risks pathologic speech patterns
+                </td>
+              </tr>
+              <tr>
+                <td>Alveolar bone graft (alveoloplasty)</td>
+                <td>~7–9 y/o (mixed dentition)</td>
+                <td>
+                  Timed to permanent canine eruption — root ~1/3–2/3 formed, crown still partly
+                  covered by bone
+                </td>
+              </tr>
+              <tr>
+                <td>Primary/definitive rhinoplasty</td>
+                <td>~14 y (F) / 16 y (M)</td>
+                <td>After facial skeletal growth is largely complete</td>
+              </tr>
+            </table>
+            <div class="verified">
+              <b>Verified:</b> Standard sequence — lip &amp; nasal repair in infancy, palate ~1 yr,
+              alveolar graft at mixed dentition, definitive rhinoplasty at skeletal maturity (later
+              in males). The palatoplasty-before-speech principle is why ~12 months is the target.
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">endorsement</span><b>"Medina – for OR proposal"</b> is a task tied
+          to a patient, mixed into the study list. The block starting "Thus: epidemiology /
+          embryology…" is her running list of exam topics to master (study to-do, not content).
+        </p>
+      </section>
+
+      <!-- PAGE 4 -->
+      <section class="page" id="p4">
+        <div class="page-head">
+          <span class="num">PAGE 4</span>
+          <h3>Cleft palate teratogens, bifid uvula, submucous cleft (+ OMC intro)</h3>
+          <span class="src">src/…616281.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              OMC Uncinate process ethmoid infundibulum hiatus semilunaris Bulla ethmoidalis Middle
+              meatus Frontal recess --------------------------------- Cleft palate [?] of cleft
+              palate Folic acid intake of mom Neonatal cheiloplasty Anti-epileptics &rarr;
+              teratogenic &rarr; retinoic / tretinoin CAS – 18–20 wks Bifid uvula Submucous cleft 2
+              or more: ① zona pellucida – midline bluish line that lacks musculus uvulae ② notch at
+              hard palate – "bony notch" ③ bifid uvula prone to AOM no attachment of tensor veli
+              palatini
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <p>
+              Two topics on one page: the <b>osteomeatal complex (OMC)</b> drainage anatomy and
+              <b>cleft-palate risk factors / submucous cleft</b>.
+            </p>
+            <h5>OMC (final common drainage pathway)</h5>
+            <p>
+              Uncinate process, ethmoid infundibulum, hiatus semilunaris, ethmoid bulla, middle
+              meatus, frontal recess. The
+              <b>anterior ethmoid, maxillary, and frontal sinuses</b> all drain into the
+              <b>middle meatus</b> via this complex — obstruction here is the pathophysiologic core
+              of chronic rhinosinusitis.
+            </p>
+            <h5>Cleft-palate teratogens &amp; risk factors</h5>
+            <ul>
+              <li><b>Low maternal folic acid</b> — supplementation is protective.</li>
+              <li><b>Anti-epileptic drugs</b> (e.g., phenytoin, valproate) are teratogenic.</li>
+              <li><b>Retinoids / isotretinoin (tretinoin)</b> — potent teratogen.</li>
+              <li>
+                "CAS 18–20 wks" = the window when a cleft is typically detectable on prenatal
+                ultrasound (congenital anomaly scan).
+              </li>
+            </ul>
+            <h5>Submucous cleft palate — classic triad (Calnan's triad)</h5>
+            <ul>
+              <li>
+                <b>Zona pellucida</b> — bluish midline translucency where the
+                <b>musculus uvulae</b> is deficient.
+              </li>
+              <li><b>Notch in the posterior hard palate</b> (bony notch).</li>
+              <li><b>Bifid uvula.</b></li>
+            </ul>
+            <div class="verified">
+              <b>Verified &amp; augmented:</b> The <b>tensor veli palatini</b> opens the Eustachian
+              tube; when the levator/tensor sling is abnormal (submucous or overt cleft), ET
+              dysfunction &rarr; recurrent <b>acute otitis media / OME</b>. Bifid uvula alone is a
+              common, often benign variant (~2% of people) but flags possible submucous cleft.
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">endorsement</span>The middle band on this page (Liad — 1st POD,
+          "for OR proposal"; Durano — 2nd, refer back for post-op; turbinate/CBC lines; Alimbaba —
+          still awaiting blood/CS; Francisco — PT, INR) is duty endorsement/labs interleaved with
+          the anatomy. Not study content.
+        </p>
+      </section>
+
+      <!-- PAGE 5 -->
+      <section class="page" id="p5">
+        <div class="page-head">
+          <span class="num">PAGE 5</span>
+          <h3>Palate &amp; cleft-lip repair techniques</h3>
+          <span class="src">src/…616279.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Musculus uvulae Palate repair Furlow's – soft palate only; opposing Z-plasty; no
+              tension Veau-Wardill(-Kilner) – advancement flap, [push-back]; hard palate –
+              incomplete; release ridge [?] Burdock [?] – alveolus – complete; free primary to soft
+              palate Von Langenbeck – release edges, relaxing incision embryology &amp; cleft lip
+              repair
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <p>The named palatoplasty techniques — the high-yield comparison.</p>
+            <table class="mini">
+              <tr>
+                <th>Technique</th>
+                <th>Principle</th>
+                <th>Note</th>
+              </tr>
+              <tr>
+                <td><b>Von Langenbeck</b></td>
+                <td>
+                  Bipedicled mucoperiosteal flaps with lateral relaxing incisions; edges released
+                  and closed in midline
+                </td>
+                <td>
+                  Oldest; keeps anterior pedicles &rarr; blood supply, but limits push-back
+                  lengthening
+                </td>
+              </tr>
+              <tr>
+                <td><b>Veau-Wardill-Kilner</b></td>
+                <td>
+                  V-Y "push-back" — flaps pedicled on greater palatine vessels, retropositioned to
+                  lengthen the velum
+                </td>
+                <td>Lengthens soft palate; leaves a raw area anteriorly</td>
+              </tr>
+              <tr>
+                <td><b>Furlow</b></td>
+                <td>Double-opposing Z-plasty of the soft palate</td>
+                <td>
+                  Lengthens velum &amp; realigns the levator sling; best speech &amp; lowest OME
+                  rates; tension-free
+                </td>
+              </tr>
+            </table>
+            <div class="verified">
+              <b>Verified:</b> These three are the standard teaching set. Von Langenbeck = bipedicle
+              flap (1861); Veau-Wardill-Kilner = two-flap V-Y push-back (1931/37); Furlow =
+              double-opposing Z-plasty (1986), which reconstructs the
+              <b>musculus uvulae / levator veli palatini</b> sling and gives the best speech and
+              hearing (OME) outcomes. ("Burdock" appears to be a mis-transcription; likely referring
+              to alveolar/complete-cleft closure rather than a standard eponym.)
+            </div>
+            <p>
+              <b>Musculus uvulae</b> is highlighted first because its reconstruction is the whole
+              point of Furlow — restoring the muscular sling that makes velopharyngeal closure work.
+            </p>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">endorsement</span>Top of page ("Paig / Francisco – MGH / Beltran –
+          ICA / …") and the faint pencil block underneath are patient endorsement lists bleeding
+          through — ignored. The red header <b>"embryology &amp; cleft lip repair"</b> is the next
+          topic heading / reading assignment.
+        </p>
+      </section>
+
+      <!-- PAGE 6 -->
+      <section class="page" id="p6">
+        <div class="page-head">
+          <span class="num">PAGE 6</span>
+          <h3>Nasal &amp; sinus anatomy, maxillectomy, tonsils</h3>
+          <span class="src">src/…616282.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Frontal – 7–10 years old ⎫ Fully Sphenoid – 3 years ⎭ developed during adolescence
+              ground lamella (anterior &amp; posterior ethmoid) Inferior – nasolacrimal duct via
+              Hasner's valve Kiesselbach's anterior ethmoid / sphenopalatine superior labial /
+              greater palatine Woodruff – sphenopalatine + posterior ethmoid part of nose: bones
+              [T?] Nasal cartilages Anatomy of the nose Subsites of nose 3 functions of nose ──
+              right column ── Types of maxillectomy Medial – medial wall of maxilla Total – inferior
+              &amp; turbinate [?] Subtotal Supra-structural / infrastructural – Orbital floor &rarr;
+              leave hard palate foramen &rarr; nerve Infraorbital foramen – CN V2 &rarr;
+              infraorbital nerve (sensory) &rarr; nasolabial &rarr; sensation to nasal dorsum, ala,
+              nasolabial area (branches in maxillary one) [CN] TONSILS – Waldeyer's ring; blood,
+              nerve supply, muscle, spacing Chronic rhinosinusitis (CRS) lamellas OMC how do we
+              grade nasal polyp CRS w/ NP – how to diagnose PARADISE criteria / absolute indication
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Sinus pneumatization (development)</h5>
+            <ul>
+              <li><b>Maxillary &amp; ethmoid</b> — present at birth.</li>
+              <li><b>Sphenoid</b> — pneumatizes from ~3 yrs.</li>
+              <li><b>Frontal</b> — last; develops ~7–10 yrs, fully formed in adolescence.</li>
+            </ul>
+            <h5>Nasal drainage &amp; blood supply</h5>
+            <ul>
+              <li>
+                <b>Nasolacrimal duct</b> drains into the <b>inferior meatus</b> via the
+                <b>valve of Hasner</b>.
+              </li>
+              <li>
+                <b>Kiesselbach's plexus (Little's area)</b>, anterior septum — anastomosis of
+                anterior ethmoidal, sphenopalatine, greater palatine, and superior labial arteries;
+                commonest site of anterior epistaxis.
+              </li>
+              <li>
+                <b>Woodruff's plexus</b> (posterolateral, under inferior turbinate) — sphenopalatine
+                + posterior ethmoidal contribution; posterior epistaxis.
+              </li>
+            </ul>
+            <h5>Types of maxillectomy</h5>
+            <p>
+              Medial (medial maxillary wall ± turbinates), <b>infrastructural</b> (below orbital
+              floor, includes hard palate), <b>suprastructural</b> (upper maxilla + orbital floor,
+              spares palate), subtotal, and <b>total</b> maxillectomy. The
+              <b>infraorbital foramen</b> transmits the infraorbital nerve (<b>CN V2</b>, sensory to
+              lower lid, nasal ala/dorsum, upper lip, nasolabial area).
+            </p>
+            <div class="verified">
+              <b>Verified:</b> <b>Waldeyer's ring</b> = pharyngeal (adenoid) + paired tubal + paired
+              palatine + lingual tonsils. Sphenoid ~2–3 yr onset, frontal sinus last (7–10 yr) —
+              matches standard references.
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag assign">study list</span>The bottom cluster ("how do we grade nasal polyp
+          / CRS w/ NP how to diagnose / PARADISE criteria / lamellas / OMC / subsites &amp; 3
+          functions of nose") is her list of topics to review — reading to-do, not notes. PARADISE =
+          tonsillectomy criteria (see below); the rest are rhinology review items.
+        </p>
+      </section>
+
+      <!-- PAGE 7 -->
+      <section class="page" id="p7">
+        <div class="page-head">
+          <span class="num">PAGE 7</span>
+          <h3>FESS, ethmoid lamellae, CT anatomic variations</h3>
+          <span class="src">src/…616284.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              1 &amp; 2 – surgery / 3 mos 3 – 1 month of treatment FESS – restore airflow &amp;
+              nasal cavity function ordinary / naromucociliary [neuro-mucociliary?] clearance
+              maxillary ostium – widened &amp; recirculation / accessory FESS goals: ① widen OMC ②
+              facilitate drainage ③ delivery of medication recurrence – signs &amp; symptoms of
+              polyp / nasal congestion FESS complications Major Minor biliary [?] epistaxis orbital
+              hematoma diplopia – medial rectus CSF leak – cribriform adhesions / synechiae ── right
+              column ── Anatomic variations on CT scan attachment ng uncinate process cells we see
+              sa sphenoid, ethmoid itsura nga sa CT scan OMC / lamella sa CT scan Lamellae ①
+              Uncinate process – ant border of hiatus semilunaris; drains frontal sinus (drainage
+              pattern) ② Ethmoid bulla – posterior wall forms part of basal lamella ③ Basal (ground)
+              lamella – divides ant &amp; post ethmoid; extends from lamina papyracea laterally to
+              middle turbinate medially ④ Superior turbinate – sphenoethmoidal recess (entry of
+              sphenoid sinus) Variation of uncinate process – obstructed drainage ① lamina papyracea
+              &rarr; into middle meatus ② skull base &rarr; medially ③ middle turbinate &rarr;
+              middle meatus Agger nasi – most anterior ethmoid cell Haller cell – infraorbital Onodi
+              cell – optic nerve / ICA Bulla ethmoidalis – largest ant. ethmoid cell
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>FESS goals &amp; principles</h5>
+            <p>
+              Functional Endoscopic Sinus Surgery aims to
+              <b>restore normal mucociliary clearance</b> — widen the OMC, re-establish natural
+              drainage, and improve topical drug delivery. Note the
+              <b>accessory maxillary ostium &rarr; recirculation</b> phenomenon (mucus loops out one
+              ostium and back in another) as a reason to connect them.
+            </p>
+            <h5>FESS complications</h5>
+            <table class="mini">
+              <tr>
+                <th>Major</th>
+                <th>Minor</th>
+              </tr>
+              <tr>
+                <td>
+                  Orbital hematoma, diplopia (<b>medial rectus</b> injury via lamina papyracea),
+                  <b>CSF leak</b> (cribriform plate / skull base), major hemorrhage
+                </td>
+                <td>Epistaxis, synechiae/adhesions</td>
+              </tr>
+            </table>
+            <h5>The four ethmoid lamellae (anterior &rarr; posterior)</h5>
+            <ul>
+              <li><b>1st — uncinate process</b> (anterior border of hiatus semilunaris)</li>
+              <li><b>2nd — ethmoid bulla</b></li>
+              <li>
+                <b>3rd — basal (ground) lamella of middle turbinate</b> — divides
+                <b>anterior vs posterior ethmoid</b>; runs from lamina papyracea (lateral) to middle
+                turbinate (medial)
+              </li>
+              <li><b>4th — superior turbinate</b> (leads to sphenoethmoidal recess)</li>
+            </ul>
+            <div class="verified">
+              <b>Verified — high-yield ethmoid cells:</b> <b>Agger nasi</b> = most anterior ethmoid
+              air cell. <b>Haller (infraorbital) cell</b> — along orbital floor/maxillary ostium,
+              can narrow drainage. <b>Onodi (sphenoethmoidal) cell</b> — posterior ethmoid cell
+              pneumatizing near the <b>optic nerve &amp; ICA</b> (surgical danger). Matches standard
+              rhinology teaching.
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag assign">note</span>Top two lines ("1 &amp; 2 – surgery / 3 mos; 3 – 1
+          month of treatment") look like a staging/treatment shorthand carried over from the CRS
+          grading on the previous page rather than a standalone fact.
+        </p>
+      </section>
+
+      <!-- PAGE 8 -->
+      <section class="page" id="p8">
+        <div class="page-head">
+          <span class="num">PAGE 8</span>
+          <h3>Nasal polyps, Lund-Mackay, CRS medical management</h3>
+          <span class="src">src/…616283.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              criteria [?] Mucopurulent nasal discharge Polyp radiographic evidence – x-ray or CT
+              edema PNS w/o contrast – gold standard nasal endoscopy [Lund-Mackay] 0 – none 1 – w/in
+              middle meatus [partial] 2 – complete a) middle turbinate – inferior border b) inferior
+              turbinate – inferior Nasal polyp grading (endoscopic) 0 – no polyp 1 – polyp w/in
+              middle meatus (a) but di / b) middle turbinate) 2 – extend beyond border of b but not
+              beyond 3 – extending beyond b ── right column ── CT findings – Lund-Mackay /
+              Lund-Kennedy Cumming OMC ant &amp; post ethmoid sinus frontal sinus maxillary sinus
+              sphenoid sinus 0 – no densities / opacification 1 – partially w/ soft tissue densities
+              2 – completely one side – 12 / 2 sides – 24 CRS steroids douching – high volume, low
+              pressure decongestant Clarithromycin up to 12 weeks / immunomodulator
+              methylprednisolone – oral 16/24 prednisone 8/16 &rarr; improve surgical field &amp;
+              bleeding, size of polyp
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Diagnosing CRS (± nasal polyps)</h5>
+            <p>
+              Symptoms (nasal obstruction, mucopurulent discharge, facial pain/pressure, hyposmia)
+              <b>&ge;12 weeks</b> PLUS objective evidence: <b>nasal endoscopy</b> (polyps, edema,
+              purulence) or <b>CT (PNS without contrast = imaging gold standard)</b>.
+            </p>
+            <h5>Lund-Mackay CT staging</h5>
+            <p>
+              Each sinus system scored <b>0 (clear) / 1 (partial opacification) / 2 (complete)</b>;
+              each OMC scored <b>0 or 2</b>. Per side max = 12; both sides = <b>max 24</b> — exactly
+              her "one side 12 / 2 sides 24."
+            </p>
+            <div class="verified">
+              <b>Verified:</b> Lund-Mackay total range 0–24 confirmed. Her second scheme (0–3, polyp
+              confined to / beyond the middle turbinate border) is the
+              <b>endoscopic polyp grade</b>; the "Lund-Kennedy" score is the separate endoscopic
+              appearance score (polyp, edema, discharge, scarring, crusting). She's conflating two
+              named systems on the same page — worth separating for the exam.
+            </div>
+            <h5>CRS medical management</h5>
+            <ul>
+              <li>
+                <b>Intranasal / short-course oral corticosteroids</b> (methylprednisolone/prednisone
+                tapers) — shrink polyps, reduce inflammation; also used pre-op to improve the
+                surgical field &amp; reduce bleeding.
+              </li>
+              <li><b>High-volume, low-pressure saline irrigation</b> ("douching").</li>
+              <li>
+                <b>Long-term low-dose macrolide (clarithromycin up to ~12 weeks)</b> as an
+                anti-inflammatory <b>immunomodulator</b> (not primarily for infection).
+              </li>
+              <li>Decongestants (short-term only).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 9 -->
+      <section class="page" id="p9">
+        <div class="page-head">
+          <span class="num">PAGE 9</span>
+          <h3>Orbital complications (Chandler), ZMC fracture, thyroid intro</h3>
+          <span class="src">src/…616280.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Crumple zones / buttresses – protects the brain LIAD periorbital cellulitis
+              Classification ★ Chandler's Classification (+ Embryology, parts of mandible, traveling
+              vessels, nerves, maxilla, zygoma) Stage ① Preseptal ② Orbital cellulitis (lacrimation)
+              ③ Subperiosteal – muscle, affected m., vertical &amp; horizontal ④ Orbital abscess
+              (may/may not; favorable/unfavorable; affected vision; Chandler's classification) ⑤
+              Cavernous sinus thrombosis (picket fence fever; paralytic; papilledema; affected
+              contralateral eye; ↑ ICP; reverse... headache) cavernous sinus + buttresses ascending
+              ramus + buttresses Zygomaticomaxillary complex – sutures: ① zygomaticofrontal ②
+              zygomatico-maxillary ③ zygomatico-temporal ④ zygomatico-sphenoid Thyroid – anatomy –
+              weight, size, location, blood supply, innervation, parathyroid histology, physiology
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Chandler classification — orbital complications of sinusitis</h5>
+            <table class="mini">
+              <tr>
+                <th>Stage</th>
+                <th>Entity</th>
+              </tr>
+              <tr>
+                <td>I</td>
+                <td><b>Preseptal (periorbital) cellulitis</b> — anterior to orbital septum</td>
+              </tr>
+              <tr>
+                <td>II</td>
+                <td><b>Orbital (postseptal) cellulitis</b> — diffuse orbital edema, no abscess</td>
+              </tr>
+              <tr>
+                <td>III</td>
+                <td><b>Subperiosteal abscess</b></td>
+              </tr>
+              <tr>
+                <td>IV</td>
+                <td><b>Orbital abscess</b> — proptosis, ophthalmoplegia, ↓ vision</td>
+              </tr>
+              <tr>
+                <td>V</td>
+                <td>
+                  <b>Cavernous sinus thrombosis</b> — bilateral signs, cranial nerve palsies (III,
+                  IV, V, VI)
+                </td>
+              </tr>
+            </table>
+            <div class="verified">
+              <b>Verified:</b> Chandler's five stages confirmed exactly (Chandler 1970). Cavernous
+              sinus thrombosis is the life-threatening endpoint — "picket-fence" spiking fever,
+              papilledema, and spread to the <b>contralateral</b> eye are classic red flags.
+            </div>
+            <h5>Zygomaticomaxillary complex (ZMC) "tripod/quadripod"</h5>
+            <p>
+              The zygoma articulates at four sutures —
+              <b
+                >zygomaticofrontal, zygomaticomaxillary, zygomaticotemporal, and
+                zygomaticosphenoid</b
+              >
+              — which is why ZMC fractures are often called quadripod fractures. "Crumple zones /
+              buttresses protect the brain" is the mnemonic: the facial buttresses absorb impact.
+            </p>
+            <h5>Thyroid intro</h5>
+            <p>
+              A checklist to review: gland weight/size/location, blood supply (superior &amp;
+              inferior thyroid arteries), innervation (recurrent + superior laryngeal nerves),
+              parathyroids, histology &amp; physiology. Detailed on pages 12–13.
+            </p>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag endo">endorsement</span>"LIAD" here is a patient surname (recurs across
+          the endorsement pages), heading a periorbital-cellulitis case rather than a topic label.
+        </p>
+      </section>
+
+      <!-- PAGE 10 -->
+      <section class="page" id="p10">
+        <div class="page-head">
+          <span class="num">PAGE 10</span>
+          <h3>Oral cavity subsites, neck dissection, tongue, flaps</h3>
+          <span class="src">src/…616285.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Oral cavity / upper vermilion wet vermilion border alveolar ridge hard palate buccal
+              mucosa floor of mouth tongue retromolar trigone MRND / RND / Selective ① supraomohyoid
+              I–III ② anterolateral II–IV ③ posterolateral II–V ④ central VI levels of LNs: ①
+              pretracheal ② paratracheal ③ retropharyngeal / precervical / Delphian node ⑤ lateral
+              II–IV (I A/B – submental / submandibular) (V A/B – posterior triangle /
+              supraclavicular / spinal accessory) ── right column ── Random blood supply – FLAPS
+              Facial artery (submental flap) – submental artery PMMF flap – blood supply
+              (thoracoacromial artery) Deltopectoral flap – internal mammary artery 1 2 3 [4 5]
+              &rarr; penetrating branch of IMA Extrinsic: movement palatoglossus – elevates → CN X
+              styloglossus – retracts genioglossus – protrudes → CN XII hyoglossus – depresses
+              Intrinsic – change shape superior / inferior / vertical / transverse / longitudinal
+              Papillae: filiform (fake / no taste) fungiform circumvallate (largest / posterior)
+              foliate
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Oral cavity subsites</h5>
+            <p>
+              Lips (vermilion), buccal mucosa, upper &amp; lower alveolar ridges (gingiva),
+              <b>retromolar trigone</b>, hard palate, floor of mouth, and anterior 2/3 of tongue.
+            </p>
+            <h5>Neck dissection &amp; nodal levels (I–VI)</h5>
+            <table class="mini">
+              <tr>
+                <th>Level</th>
+                <th>Region</th>
+              </tr>
+              <tr>
+                <td>I (A/B)</td>
+                <td>Submental / submandibular</td>
+              </tr>
+              <tr>
+                <td>II–IV</td>
+                <td>Upper, mid, lower jugular (deep cervical) chain</td>
+              </tr>
+              <tr>
+                <td>V (A/B)</td>
+                <td>Posterior triangle / supraclavicular</td>
+              </tr>
+              <tr>
+                <td>VI</td>
+                <td>Central (pre/paratracheal, prelaryngeal/Delphian)</td>
+              </tr>
+            </table>
+            <p>
+              <b>Supraomohyoid</b> = levels I–III; <b>lateral</b> = II–IV; <b>posterolateral</b> =
+              II–V; <b>central</b> = VI. RND removes levels I–V + SCM, IJV, CN XI; MRND spares one
+              or more of those non-lymphatic structures.
+            </p>
+            <h5>Tongue muscles</h5>
+            <ul>
+              <li>
+                <b>Extrinsic (position):</b> genio<b>glossus</b> protrudes, hyo<b>glossus</b>
+                depresses, stylo<b>glossus</b> retracts — all <b>CN XII</b>;
+                <b>palatoglossus elevates — CN X</b> (the exception).
+              </li>
+              <li>
+                <b>Intrinsic (shape):</b> superior/inferior longitudinal, transverse, vertical.
+              </li>
+            </ul>
+            <div class="verified">
+              <b>Verified — flap blood supply:</b> Submental island flap =
+              <b>facial &rarr; submental artery</b>; pectoralis major (PMMF) =
+              <b>thoracoacromial (pectoral branch)</b>; deltopectoral (Bakamjian) =
+              <b>perforators of the internal mammary artery</b> (1st–4th). Filiform papillae have no
+              taste buds ("fake"); circumvallate are largest, in a V anteriorly to the sulcus
+              terminalis.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 11 -->
+      <section class="page" id="p11">
+        <div class="page-head">
+          <span class="num">PAGE 11</span>
+          <h3>Salivary glands, facial nerve, JNA</h3>
+          <span class="src">src/…616287.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              GLANDS Secretions CN 7 – submandibular – Wharton's | mixed → serous [?] CN 7 –
+              sublingual – Rivinus | mucoid CN IX – parotid – Stensen | serous greater petrosal –
+              lacrimal / submandibular – nerve – sublingual medial &amp; lateral pterygoids w/ CT
+              scan pikachu [?] / Chvostek's sign / Hoffmann's sign → locally aggressive
+              sphenopalatine artery – internal maxillary artery ? where it originates ? what is
+              external maxillary artery?? → primary → facial artery labyrinthine segment shortest
+              tympanic segment mastoid segment / geniculate → temporofacial / cervicofacial /
+              zygomaticotemporal ── right column ── Facial nerve Intracranial greater petrosal –
+              lacrimal gland ASSIGNMENTS JNA originates at the level of the pterygopalatine fossa
+              Chandler's staging 1: confined to nasopharynx 2: extends to nasal cavity or sphenoid
+              3: involves maxillary, ethmoid sinus, infratemporal fossa, cheek and cavernous sinus
+              4: extends to intracranial
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Salivary glands — ducts &amp; secretion</h5>
+            <table class="mini">
+              <tr>
+                <th>Gland</th>
+                <th>Duct</th>
+                <th>Secretion</th>
+              </tr>
+              <tr>
+                <td>Parotid</td>
+                <td><b>Stensen's</b></td>
+                <td>Serous</td>
+              </tr>
+              <tr>
+                <td>Submandibular</td>
+                <td><b>Wharton's</b></td>
+                <td>Mixed (mostly serous)</td>
+              </tr>
+              <tr>
+                <td>Sublingual</td>
+                <td><b>Rivinus (+ Bartholin)</b></td>
+                <td>Mixed (mostly mucous)</td>
+              </tr>
+            </table>
+            <p>
+              Note: parotid <b>secretomotor</b> supply is <b>CN IX</b> (glossopharyngeal &rarr; otic
+              ganglion); submandibular &amp; sublingual are <b>CN VII</b> (chorda tympani &rarr;
+              submandibular ganglion). The note's "CN 7/CN IX" labels line up once you match them to
+              the right gland.
+            </p>
+            <h5>Facial nerve — intratemporal segments</h5>
+            <p>
+              Meatal &rarr; <b>labyrinthine (shortest, most vulnerable)</b> &rarr;
+              <b>tympanic</b> &rarr; <b>mastoid</b>. The <b>geniculate ganglion</b> gives off the
+              <b>greater petrosal nerve &rarr; lacrimal gland</b> (tearing). Extracranially the
+              nerve splits at the pes anserinus into <b>temporofacial</b> and
+              <b>cervicofacial</b> divisions.
+            </p>
+            <div class="verified">
+              <b>Verified:</b> Labyrinthine segment is the shortest and narrowest intratemporal
+              segment — the classic bottleneck in Bell's palsy edema. Chvostek's/Trousseau's signs
+              relate to hypocalcemia (relevant post-thyroidectomy, cross-referencing the
+              endorsements).
+            </div>
+            <h5>JNA (assignment)</h5>
+            <p>
+              <b>Juvenile nasopharyngeal angiofibroma</b> — benign but locally aggressive vascular
+              tumor of adolescent males, arising at the
+              <b>sphenopalatine foramen / pterygopalatine fossa</b>; fed by the
+              <b>internal maxillary artery</b>. (Note: JNA is usually staged by
+              <b>Radkowski or Fisch</b> systems — the "Chandler staging" she wrote is being used
+              loosely here; double-check which staging the assignment wants.)
+            </p>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag assign">assignment</span>The right column is explicitly headed
+          <b>"ASSIGNMENTS"</b> — the JNA origin + a 4-stage nasopharyngeal-tumor staging to look up.
+          Homework, separated from the anatomy content.
+        </p>
+      </section>
+
+      <!-- PAGE 12 -->
+      <section class="page" id="p12">
+        <div class="page-head">
+          <span class="num">PAGE 12</span>
+          <h3>Le Fort intro, Bethesda system, ACR TI-RADS</h3>
+          <span class="src">src/…616289.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Project Assignment: TIRADS / classification [?] [thyroid...] / types of thyroid
+              malignancy / their histology Le Fort Bethesda system for FNA results of thyroid
+              nodules Diagnostic cat. Risk of malignancy Management ① Nondiagnostic 1–4% Repeat FNA
+              ② Benign 0–3% Observation ③ AUS 5–15% Consider molecular testing ④ Follicular neoplasm
+              15–30% Consider lobectomy or suspicious for follicular neoplasm lobectomy ⑤ Suspicious
+              for malignancy 60–75% Thyroidectomy ⑥ Malignant 97–99% Thyroidectomy ── right column
+              (TI-RADS UTZ) ── Composition Echogenicity Shape Margin Echogenic foci Cystic 0
+              Anechoic 0 wider>tall 0 smooth 0 none/large comet 0 Spongiform 0 hyperechoic 1
+              taller>wide 3 ill-defined 0 macrocalc 1 Mixed 1 Hypoechoic 2 lobulated/irregular 2
+              peripheral calc 2 Solid 2 very hypoechoic 3 extra-thyroidal ext 3 punctate echogenic
+              foci 3 0 pts=TR1 | 2 pts=TR2 | 3 pts=TR3 | 4–6=TR4 | ≥7=TR5 Benign / Not suspicious /
+              Mildly susp / Moderately susp / Highly susp No FNA | No FNA | FNA if ≥2.5cm, F/U
+              ≥1.5cm | FNA ≥1.5cm, F/U ≥1cm | FNA ≥1cm, F/U ≥0.5cm Thyroid Malignancy (US features):
+              taller than wide / microcalcifications / ill-defined irregular borders / hypoechoic /
+              extrathyroidal extension / increased vascularity
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Bethesda system (thyroid FNA)</h5>
+            <table class="mini">
+              <tr>
+                <th>Cat.</th>
+                <th>Diagnosis</th>
+                <th>Malignancy risk</th>
+                <th>Management</th>
+              </tr>
+              <tr>
+                <td>I</td>
+                <td>Nondiagnostic</td>
+                <td>~5–10% (her ~1–4%)</td>
+                <td>Repeat FNA w/ US guidance</td>
+              </tr>
+              <tr>
+                <td>II</td>
+                <td>Benign</td>
+                <td>0–3%</td>
+                <td>Clinical/US follow-up</td>
+              </tr>
+              <tr>
+                <td>III</td>
+                <td>AUS/FLUS</td>
+                <td>~10–30%</td>
+                <td>Repeat FNA / molecular testing</td>
+              </tr>
+              <tr>
+                <td>IV</td>
+                <td>Follicular neoplasm</td>
+                <td>~25–40%</td>
+                <td>Lobectomy (± molecular)</td>
+              </tr>
+              <tr>
+                <td>V</td>
+                <td>Suspicious for malignancy</td>
+                <td>~50–75%</td>
+                <td>Lobectomy or near-total thyroidectomy</td>
+              </tr>
+              <tr>
+                <td>VI</td>
+                <td>Malignant</td>
+                <td>~97–99%</td>
+                <td>Thyroidectomy</td>
+              </tr>
+            </table>
+            <div class="verified">
+              <b>Verified:</b> Six categories and the general risk ladder are correct. Her numbers
+              match older Bethesda figures; the <b>2017 revision</b> nudged some ranges (esp. III
+              &amp; IV upward if NIFTP is counted as malignant) — worth citing the 2017 values on an
+              exam.
+            </div>
+            <h5>ACR TI-RADS (US risk stratification)</h5>
+            <p>Points across five features are summed &rarr; TR level:</p>
+            <ul>
+              <li>Composition, Echogenicity, Shape, Margin, Echogenic foci — each scored.</li>
+              <li>
+                0 = <b>TR1</b>, 2 = <b>TR2</b>, 3 = <b>TR3</b>, 4–6 = <b>TR4</b>, &ge;7 =
+                <b>TR5</b>.
+              </li>
+              <li>
+                <b>FNA thresholds:</b> TR3 &ge;2.5 cm; TR4 &ge;1.5 cm; TR5 &ge;1.0 cm. Follow-up at
+                smaller sizes (TR3 &ge;1.5, TR4 &ge;1.0, TR5 &ge;0.5 cm).
+              </li>
+            </ul>
+            <div class="verified">
+              <b>Verified:</b> Point assignments, TR cutoffs, and FNA/follow-up size thresholds all
+              match the current ACR TI-RADS. Suspicious US features listed (taller-than-wide,
+              microcalcifications, irregular margins, marked hypoechogenicity, extrathyroidal
+              extension, ↑ vascularity) are the standard malignancy flags.
+            </div>
+          </div>
+        </div>
+        <p class="noise">
+          <span class="tag assign">assignment</span>Top of page is literally a
+          <b>"Project Assignment"</b> — build out TI-RADS classification + types of thyroid
+          malignancy + histology. The content below is her working answer to that assignment.
+        </p>
+      </section>
+
+      <!-- PAGE 13 -->
+      <section class="page" id="p13">
+        <div class="page-head">
+          <span class="num">PAGE 13</span>
+          <h3>Thyroid cancers &amp; Le Fort fractures</h3>
+          <span class="src">src/…616290.jpg</span>
+        </div>
+        <div class="cols">
+          <div class="col left">
+            <h4>Verbatim</h4>
+            <div class="verbatim">
+              Thyroid CAs ① Papillary thyroid CA – most common; risk: Gardner's syndrome – young
+              females – histopath: psammoma bodies (calcific); "Orphan Annie" eyes, multicentric ②
+              Follicular carcinoma – second most common thyroid cancer – hematogenous spread –
+              histopath: unifocal neoplastic follicular cells; malignancy differentiated by presence
+              of extracapsular spread / invasion of vasculature, or metastasis – variant: Hurthle
+              cell CA (oncocytic CA) histopath: predominantly Hurthle cells, similar to follicular
+              CA, extracapsular spread, invasion of lymphatics or vasculature, or metastasis
+              (clinical mgmt) ③ Medullary thyroid CA a) familial b) sporadic derived from
+              neuroendocrine parafollicular C-cells; histopath: varied cells, amyloid stroma,
+              peripheral C-cell hyperplasia ── right column ── ④ Anaplastic carcinoma – most
+              commonly seen in the elderly – histopath: giant and spindle cell variation, high
+              mitotic density, large areas of necrosis, significant infiltration; undifferentiated
+              "bizarre cells" ⑤ Primary lymphoma of the thyroid – non-Hodgkin B-cell tumors – assoc.
+              w/ Hashimoto's thyroiditis Le Fort – all involve pterygoid plates ① Le Fort I (Guerin)
+              – maxillary; horizontal; 2nd MC – upper alveolus separated from upper maxilla –
+              involves anterolateral maxillary wall, medial maxillary wall, pterygoid plate, septum,
+              at floor of nose ② Le Fort II (Pyramidal) – most common – involves nasofrontal suture,
+              medial and lateral orbital wall and floor, inferior orbital fissure, zygomaticofrontal
+              suture, zygoma, zygomatic arch, pterygoid plates, nasal septum ③ Le Fort III
+              (Craniofacial disjunction) – involves nasofrontal suture, medial and lateral orbital
+              wall and floor, inferior orbital fissure, zygomaticofrontal suture, zygoma …
+            </div>
+          </div>
+          <div class="col right">
+            <h4>Interpretation</h4>
+            <h5>Thyroid carcinomas</h5>
+            <table class="mini">
+              <tr>
+                <th>Type</th>
+                <th>Key features</th>
+              </tr>
+              <tr>
+                <td><b>Papillary</b> (most common, ~80%)</td>
+                <td>
+                  Young females; <b>psammoma bodies</b>, "Orphan-Annie eye" nuclei, nuclear grooves;
+                  lymphatic spread; excellent prognosis. Assoc. Gardner's / FAP, prior radiation.
+                </td>
+              </tr>
+              <tr>
+                <td><b>Follicular</b> (2nd)</td>
+                <td>
+                  Malignancy diagnosed by <b>capsular / vascular invasion</b> (not cytology alone);
+                  <b>hematogenous</b> spread (bone, lung).
+                </td>
+              </tr>
+              <tr>
+                <td><b>Hürthle cell</b> (oncocytic variant)</td>
+                <td>
+                  Follicular-type behavior, oncocytic cells; can spread via lymphatics/vasculature.
+                </td>
+              </tr>
+              <tr>
+                <td><b>Medullary</b></td>
+                <td>
+                  From <b>parafollicular C-cells</b> &rarr; <b>calcitonin</b>;
+                  <b>amyloid stroma</b>; sporadic or familial (MEN 2A/2B, RET).
+                </td>
+              </tr>
+              <tr>
+                <td><b>Anaplastic</b></td>
+                <td>
+                  Elderly; undifferentiated giant/spindle "bizarre" cells; highly aggressive, poor
+                  prognosis.
+                </td>
+              </tr>
+              <tr>
+                <td><b>Primary lymphoma</b></td>
+                <td>
+                  Non-Hodgkin B-cell; strongly associated with <b>Hashimoto's thyroiditis</b>.
+                </td>
+              </tr>
+            </table>
+            <h5>Le Fort fractures (all involve the pterygoid plates)</h5>
+            <table class="mini">
+              <tr>
+                <th>Type</th>
+                <th>Pattern</th>
+              </tr>
+              <tr>
+                <td><b>I (Guérin)</b></td>
+                <td>
+                  Horizontal — separates the alveolus/palate from the upper maxilla ("floating
+                  palate")
+                </td>
+              </tr>
+              <tr>
+                <td><b>II (Pyramidal)</b></td>
+                <td>
+                  Through nasofrontal suture, medial orbit, <b>inferior orbital rim/floor</b>,
+                  across maxilla and pterygoids ("floating maxilla")
+                </td>
+              </tr>
+              <tr>
+                <td><b>III</b></td>
+                <td>
+                  <b>Craniofacial disjunction</b> — separates entire midface from skull base;
+                  through zygomatic arch, lateral orbit, nasofrontal suture
+                </td>
+              </tr>
+            </table>
+            <div class="verified">
+              <b>Verified:</b> The
+              <b>defining feature of any Le Fort fracture is pterygoid plate involvement</b>. Le
+              Fort II uniquely crosses the <b>infraorbital rim</b>; Le Fort III is complete
+              craniofacial separation. (Her "II = most common" is a reasonable clinical claim,
+              though frequency varies by series — often quoted as I or II depending on mechanism.)
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        Transcribed &amp; augmented for residency exam review · 13 pages · Handwriting is noisy —
+        verbatim columns are best-effort OCR with <code>[?]</code> on uncertain words. Ask if any
+        transcription looks off and I'll re-check the specific image.
+      </p>
+      <p>
+        <b>Sources used for fact-checking:</b>
+        <a href="https://radiopaedia.org/articles/chandler-classification-of-orbital-infections"
+          >Chandler classification (Radiopaedia)</a
+        >
+        ·
+        <a
+          href="https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/TI-RADS"
+          >ACR TI-RADS</a
+        >
+        ·
+        <a href="https://pubmed.ncbi.nlm.nih.gov/29091573/"
+          >2017 Bethesda System (Cibas &amp; Ali)</a
+        >
+        ·
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK526060/">Le Fort fractures (StatPearls)</a> ·
+        <a
+          href="https://plasticsurgerykey.com/12-cleft-palate-repair-the-furlow-double-opposing-z-plasty-the-von-langenbeck-palatoplasty-and-the-v-y-pushback-palatoplasty/"
+          >Palatoplasty techniques</a
+        >
+        ·
+        <a href="https://reference.medscape.com/calculator/75/lund-mackay-sinusitis-stage"
+          >Lund-Mackay staging</a
+        >
+        ·
+        <a href="https://www.mdcalc.com/calc/10081/paradise-criteria-tonsillectomy-children"
+          >Paradise criteria</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
