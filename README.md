@@ -19,6 +19,8 @@ Small browser games and puzzle solvers, deployed to GitHub Pages at
 - `/poop-patrol/index.html` — splat-em-up, inspired by Damn Birds
 - `/bro-squad/index.html` — twin-stick roguelite, inspired by Gun Bros
 
+Plus `/catherine/notes/` — static ENT study notes, not linked from the landing page.
+
 Game logic lives in [src/games/](src/games/) as plain TypeScript modules with no React
 imports, so it's unit-testable on its own — that's where the tests are.
 
